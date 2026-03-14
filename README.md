@@ -104,7 +104,7 @@ Chameleon/
 │   ├── api/
 │   │   ├── main.py              ← FastAPI Hub server
 │   │   └── certify.py           ← POST /certify, W3C VC issuance
-│   ├── web/certified.html       ← 38-object certified catalogue
+│   ├── web/certified.html       ← 52-object certified catalogue
 │   └── docker/                  ← Dockerfile + docker-compose
 │
 ├── chameleon_adaptor/           ← Flutter human adaptor app
@@ -119,7 +119,7 @@ Chameleon/
 
 ### 1. Run the Karpathy loop (stub mode — no GPU needed)
 ```bash
-git clone https://github.com/YOUR_USERNAME/chameleon-protocol
+git clone https://github.com/RenLes/chameleon-protocol
 cd chameleon-protocol/chameleon_experiments/karpathy_test
 
 # Start the physics stub server
@@ -250,9 +250,9 @@ Write optimised parameters back to manifest
 - [x] Certified object catalogue (web UI)
 - [x] Cloud GPU validation — Stovetop Kettle (RTX 4090) ✅
 - [x] Cloud GPU validation — TV Remote Control (RTX 4090) ✅
-- [ ] Real robot arm validation (Unitree Z1 / UR5e)
+- [x] ROS2 bridge — myCobot 280 + UR5e + generic adapter ✅
+- [ ] Real robot arm validation (myCobot 280 / UR5e)
 - [ ] LeRobot dataset integration
-- [ ] ROS2 bridge (in progress)
 - [ ] Flutter adaptor app (in progress)
 - [ ] 100-object manifest library
 
@@ -260,10 +260,15 @@ Write optimised parameters back to manifest
 
 ## Contributing
 
-Manifests welcome. Each new object needs:
-1. A valid JSON manifest following the schema above
-2. A safety review (`humanoidCrossCheckRequired` set correctly)
-3. Validation via `python chameleon_certify/cli.py --validate`
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide — manifest template, safety guidelines, PR checklist, and development setup.
+
+**Quick start:**
+```bash
+# Validate a manifest before submitting
+python chameleon_certify/cli.py --validate --manifest chameleon_library/kitchen/my_object_manifest.json
+```
+
+Want a new object added? [Open a manifest request →](https://github.com/RenLes/chameleon-protocol/issues/new?template=new_manifest.md)
 
 ---
 
