@@ -1,10 +1,24 @@
 chameleon_node:
   ros__parameters:
+    # ── Robot type ──────────────────────────────────────────────────────────
+    robot_type: "mycobot"          # mycobot | ur5e | generic
+
+    # ── Chameleon Hub ────────────────────────────────────────────────────────
     hub_url: "http://localhost:8080"
-    safety_level: "strict"         # strict | moderate | permissive
     humanoid_did: "did:chameleon:humanoid:unit-001"
-    force_limit_newtons: 50.0
-    temperature_limit_celsius: 80.0
-    ledger_mode: "iota_private"
-    isaac_sim_enabled: true
-    digital_twin_sync_hz: 10
+
+    # ── Karpathy loop ────────────────────────────────────────────────────────
+    karpathy_url: "http://localhost:8211"
+    karpathy_feedback: true        # Feed sensor data back to optimiser
+
+    # ── Safety ───────────────────────────────────────────────────────────────
+    safety_level: "strict"         # strict | moderate | permissive
+    force_limit_newtons: 15.0      # Overridden per-manifest at runtime
+
+    # ── Execution ────────────────────────────────────────────────────────────
+    dry_run: false                 # Set true to test without moving arm
+
+    # ── Digital twin ─────────────────────────────────────────────────────────
+    isaac_sim_enabled: false       # Enable Isaac Sim digital twin sync
+    digital_twin_sync_hz: 10      # Joint state sync frequency
+    ledger_mode: "iota_private"    # Ledger backend

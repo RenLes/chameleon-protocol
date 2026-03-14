@@ -39,8 +39,6 @@ The robot reads the manifest, the **Karpathy loop** optimises the parameters, an
 
 Validated on **NVIDIA RTX 4090** (Vast.ai cloud, Ubuntu 22.04, CUDA 12.1) — March 2026
 
-| Metric | Result |
-|--------|--------|
 ### Object 1 — Stovetop Kettle
 
 | Metric | Result |
@@ -277,7 +275,8 @@ Manifests welcome. Each new object needs:
 
 ## License
 
-MIT License — open for humanoid robot developers, researchers, and manufacturers.
+Apache License 2.0 — open for humanoid robot developers, researchers, and manufacturers.
+Copyright 2026 David Qicatabua / RenLes. See [LICENSE](LICENSE) for full terms.
 
 ---
 
