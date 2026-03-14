@@ -271,7 +271,7 @@ Manifests welcome. Each new object needs:
 |-------------|------|
 | **David Qicatabua** ([@DavidQicatabua](https://twitter.com/DavidQicatabua)) | Protocol designer, founder — RenLes |
 | **Claude** (Anthropic) | AI development partner — architecture, code, certification pipeline |
-| **Grok** (xAI) | AI creative partner — hero image generation |
+| **Grok** (xAI) | AI research partner — planning, research and hero image generation |
 
 ---
 
