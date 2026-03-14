@@ -265,6 +265,16 @@ Manifests welcome. Each new object needs:
 
 ---
 
+## Contributors
+
+| Contributor | Role |
+|-------------|------|
+| **David Qicatabua** ([@DavidQicatabua](https://twitter.com/DavidQicatabua)) | Protocol designer, founder — RenLes |
+| **Claude** (Anthropic) | AI development partner — architecture, code, certification pipeline |
+| **Grok** (xAI) | AI creative partner — hero image generation |
+
+---
+
 ## License
 
 MIT License — open for humanoid robot developers, researchers, and manufacturers.
@@ -272,4 +282,4 @@ MIT License — open for humanoid robot developers, researchers, and manufacture
 ---
 
 *Chameleon Protocol v1.0 — Cloud validated March 2026 on NVIDIA RTX 4090*
-*Built with Claude (Anthropic) · Karpathy loop · Isaac Lab · W3C DID/VC*
+*Built with Claude (Anthropic) · Grok (xAI) · Karpathy loop · Isaac Lab · W3C DID/VC*
