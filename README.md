@@ -3,6 +3,12 @@
 > **The open standard for humanoid robot–object interaction.**
 > Every physical object gets a manifest. Every action gets validated. Every interaction gets logged.
 
+![Humanoid pouring tea for a human in a living room](Humanoid_Pouring_Kettle.jpg)
+
+*The everyday task Chameleon is built for — a humanoid safely pouring tea, guided by a certified object manifest, with every parameter validated and every action logged.*
+
+---
+
 ![Chameleon Karpathy Optimisation — Stovetop Kettle — RTX 4090](chameleon_experiments/karpathy_test/plots/chameleon_results.png)
 
 *Stovetop Kettle: 100 iterations on NVIDIA RTX 4090. Best score: +0.4560. Zero safety violations. Optimal fill fraction 0.89.*
