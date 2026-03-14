@@ -1,0 +1,151 @@
+name: Validate Manifests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'chameleon_library/**'
+      - 'chameleon_certify/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'chameleon_library/**'
+      - 'chameleon_certify/**'
+
+jobs:
+  validate:
+    name: Validate all manifests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate all manifests
+        run: |
+          python3 << 'EOF'
+          import json, sys
+          from pathlib import Path
+
+          BASE = Path("chameleon_library")
+          REQUIRED = [
+              "protocolVersion", "objectId", "objectClass", "commonName",
+              "category", "physicalProperties", "actions", "safety",
+              "security", "certificationStatus"
+          ]
+
+          passed, failed = 0, []
+
+          for f in sorted(BASE.rglob("*.json")):
+              try:
+                  m = json.loads(f.read_text())
+                  missing = [k for k in REQUIRED if k not in m]
+
+                  # Check actions have maxDurationSeconds
+                  bad_actions = []
+                  for act_name, act in m.get("actions", {}).items():
+                      if "maxDurationSeconds" not in act:
+                          bad_actions.append(act_name)
+
+                  # Check safety fields
+                  safety = m.get("safety", {})
+                  missing_safety = [k for k in ["maxForceNewtons", "humanoidCrossCheckRequired"]
+                                    if k not in safety]
+
+                  # Check objectId format
+                  oid = m.get("objectId", "")
+                  bad_oid = not oid.startswith("did:chameleon:")
+
+                  issues = []
+                  if missing:        issues.append(f"missing fields: {missing}")
+                  if bad_actions:    issues.append(f"actions missing maxDurationSeconds: {bad_actions}")
+                  if missing_safety: issues.append(f"missing safety fields: {missing_safety}")
+                  if bad_oid:        issues.append(f"invalid objectId format: {oid}")
+
+                  if issues:
+                      failed.append((str(f), issues))
+                      print(f"❌ {f.name}: {'; '.join(issues)}")
+                  else:
+                      passed += 1
+                      print(f"✅ {f.name}")
+
+              except json.JSONDecodeError as e:
+                  failed.append((str(f), [f"Invalid JSON: {e}"]))
+                  print(f"❌ {f.name}: Invalid JSON — {e}")
+              except Exception as e:
+                  failed.append((str(f), [str(e)]))
+                  print(f"❌ {f.name}: {e}")
+
+          print(f"\n{'='*50}")
+          print(f"Results: {passed} passed, {len(failed)} failed")
+          print(f"{'='*50}")
+
+          if failed:
+              print("\nFailed manifests:")
+              for path, issues in failed:
+                  print(f"  {path}:")
+                  for issue in issues:
+                      print(f"    - {issue}")
+              sys.exit(1)
+          else:
+              print(f"\n🎉 All {passed} manifests valid!")
+          EOF
+
+      - name: Count manifests by category
+        run: |
+          python3 << 'EOF'
+          from pathlib import Path
+          from collections import defaultdict
+
+          BASE = Path("chameleon_library")
+          counts = defaultdict(int)
+          total = 0
+
+          for f in BASE.rglob("*.json"):
+              counts[f.parent.name] += 1
+              total += 1
+
+          print(f"\n📦 Manifest Library Summary")
+          print(f"{'='*35}")
+          for cat, count in sorted(counts.items()):
+              print(f"  {cat:<20} {count:>3} objects")
+          print(f"{'='*35}")
+          print(f"  {'TOTAL':<20} {total:>3} objects")
+          EOF
+
+      - name: Check for duplicate objectIds
+        run: |
+          python3 << 'EOF'
+          import json, sys
+          from pathlib import Path
+          from collections import defaultdict
+
+          BASE = Path("chameleon_library")
+          seen = defaultdict(list)
+
+          for f in BASE.rglob("*.json"):
+              try:
+                  m = json.loads(f.read_text())
+                  oid = m.get("objectId", "")
+                  if oid:
+                      seen[oid].append(str(f))
+              except:
+                  pass
+
+          dupes = {oid: files for oid, files in seen.items() if len(files) > 1}
+
+          if dupes:
+              print("❌ Duplicate objectIds found:")
+              for oid, files in dupes.items():
+                  print(f"  {oid}:")
+                  for f in files:
+                      print(f"    - {f}")
+              sys.exit(1)
+          else:
+              print(f"✅ No duplicate objectIds ({len(seen)} unique IDs)")
+          EOF

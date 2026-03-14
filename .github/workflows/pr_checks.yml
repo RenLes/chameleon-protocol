@@ -1,0 +1,99 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  label:
+    name: Auto-label PR
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Label manifest PRs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const files = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            const labels = new Set();
+            const paths = files.data.map(f => f.filename);
+
+            for (const path of paths) {
+              if (path.startsWith('chameleon_library/kitchen/'))     labels.add('🍳 kitchen');
+              if (path.startsWith('chameleon_library/workshop/'))    labels.add('🔧 workshop');
+              if (path.startsWith('chameleon_library/bathroom/'))    labels.add('🚿 bathroom');
+              if (path.startsWith('chameleon_library/bedroom/'))     labels.add('🛏 bedroom');
+              if (path.startsWith('chameleon_library/living_room/')) labels.add('🛋 living-room');
+              if (path.startsWith('chameleon_library/office/'))      labels.add('💼 office');
+              if (path.startsWith('chameleon_library/garden/'))      labels.add('🌿 garden');
+              if (path.startsWith('chameleon_library/healthcare/'))  labels.add('💊 healthcare');
+              if (path.startsWith('chameleon_library/security/'))    labels.add('🔒 security');
+              if (path.startsWith('chameleon_library/'))             labels.add('new-manifest');
+              if (path.startsWith('chameleon_ros2/'))                labels.add('ros2');
+              if (path.startsWith('chameleon_hub/'))                 labels.add('hub');
+              if (path.startsWith('chameleon_certify/'))             labels.add('certification');
+              if (path.endsWith('.md'))                              labels.add('documentation');
+            }
+
+            if (labels.size > 0) {
+              // Create labels if they don't exist, then apply
+              for (const label of labels) {
+                try {
+                  await github.rest.issues.createLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label,
+                    color: 'ededed'
+                  });
+                } catch (e) { /* label exists */ }
+              }
+
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: [...labels]
+              });
+            }
+
+      - name: Welcome first-time contributors
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const creator = context.payload.pull_request.user.login;
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            const prsByUser = prs.filter(pr => pr.user.login === creator);
+
+            if (prsByUser.length === 1) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `👋 Welcome to Chameleon Protocol, @${creator}! Thanks for your first contribution.\n\n` +
+                      `Your manifest will be reviewed for:\n` +
+                      `- ✅ Schema validity\n` +
+                      `- ✅ Safety parameter completeness\n` +
+                      `- ✅ Correct \`humanoidCrossCheckRequired\` flag\n` +
+                      `- ✅ Unique \`objectId\`\n\n` +
+                      `The CI will run automatically. Check the **Actions** tab for results.\n\n` +
+                      `*Chameleon Protocol — Making humanoid robots safer, one manifest at a time.* 🦎`
+              });
+            }
