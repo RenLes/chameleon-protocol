@@ -126,5 +126,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 5
     }
-  ]
+  ],
+  "commonName": "Measuring Tape"
 }

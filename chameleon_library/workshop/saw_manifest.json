@@ -136,5 +136,6 @@
       "humanoidCrossCheck": true,
       "maxDurationSeconds": 5
     }
-  ]
+  ],
+  "commonName": "Saw"
 }

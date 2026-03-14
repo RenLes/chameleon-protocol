@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:garden:trowel-v1",
+  "objectClass": "garden.tool",
+  "commonName": "Garden Trowel",
+  "manufacturer": "Generic",
+  "category": "garden",
+  "physicalProperties": {
+    "massKg": 0.25,
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "dig": {
+      "maxDurationSeconds": 30,
+      "parameters": {
+        "digForceN": {
+          "default": 20.0,
+          "min": 8.0,
+          "max": 40.0
+        },
+        "digDepthCm": {
+          "default": 10.0,
+          "min": 3.0,
+          "max": 20.0
+        },
+        "strokeSpeedCms": {
+          "default": 5.0,
+          "min": 2.0,
+          "max": 12.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 40,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

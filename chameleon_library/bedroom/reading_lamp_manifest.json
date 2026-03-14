@@ -1,0 +1,78 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:bedroom:reading-lamp-v1",
+  "objectClass": "bedroom.electronics",
+  "commonName": "Reading Lamp",
+  "manufacturer": "Generic",
+  "category": "bedroom",
+  "physicalProperties": {
+    "massKg": 0.8,
+    "graspPoints": [
+      {
+        "id": "neck",
+        "type": "pinch_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "adjust_angle": {
+      "maxDurationSeconds": 5,
+      "parameters": {
+        "rotateAngleDeg": {
+          "default": 45,
+          "min": -90,
+          "max": 90
+        },
+        "adjustForceN": {
+          "default": 2.0,
+          "min": 0.5,
+          "max": 5.0
+        },
+        "moveSpeedDegS": {
+          "default": 20,
+          "min": 5,
+          "max": 45
+        }
+      }
+    },
+    "press_switch": {
+      "maxDurationSeconds": 2,
+      "parameters": {
+        "pressForceN": {
+          "default": 1.5,
+          "min": 0.5,
+          "max": 3.0
+        },
+        "fingerAngleDeg": {
+          "default": 45,
+          "min": 20,
+          "max": 70
+        },
+        "approachSpeedCms": {
+          "default": 3.0,
+          "min": 1.0,
+          "max": 6.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 6,
+    "maxTemperatureCelsius": 60,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

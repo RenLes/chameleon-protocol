@@ -1,0 +1,80 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:kitchen:electric-kettle-v1",
+  "objectClass": "kitchen.appliance",
+  "commonName": "Electric Kettle",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "physicalProperties": {
+    "massKg": 1.0,
+    "fullWeightKg": 2.5,
+    "maxCapacityLitres": 1.5,
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "fill": {
+      "maxDurationSeconds": 30,
+      "parameters": {
+        "fillStopFraction": {
+          "default": 0.8,
+          "min": 0.2,
+          "max": 1.0
+        },
+        "liftHeightCm": {
+          "default": 20,
+          "min": 10,
+          "max": 35
+        },
+        "pourTiltAngleDeg": {
+          "default": 115,
+          "min": 90,
+          "max": 145
+        }
+      }
+    },
+    "press_switch": {
+      "maxDurationSeconds": 2,
+      "parameters": {
+        "pressForceN": {
+          "default": 2.0,
+          "min": 0.5,
+          "max": 4.0
+        },
+        "fingerAngleDeg": {
+          "default": 45,
+          "min": 20,
+          "max": 70
+        },
+        "approachSpeedCms": {
+          "default": 4.0,
+          "min": 1.0,
+          "max": 8.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 12,
+    "maxTemperatureCelsius": 100,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

@@ -118,5 +118,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 3
     }
-  ]
+  ],
+  "commonName": "Remote Control"
 }

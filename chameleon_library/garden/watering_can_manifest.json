@@ -1,0 +1,60 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:garden:watering-can-v1",
+  "objectClass": "garden.tool",
+  "commonName": "Watering Can",
+  "manufacturer": "Generic",
+  "category": "garden",
+  "physicalProperties": {
+    "massKg": 0.6,
+    "fullWeightKg": 4.6,
+    "maxCapacityLitres": 4.0,
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "water_plant": {
+      "maxDurationSeconds": 20,
+      "parameters": {
+        "tiltAngleDeg": {
+          "default": 100,
+          "min": 80,
+          "max": 130
+        },
+        "liftHeightCm": {
+          "default": 30,
+          "min": 15,
+          "max": 50
+        },
+        "fillStopFraction": {
+          "default": 0.7,
+          "min": 0.2,
+          "max": 1.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 20,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

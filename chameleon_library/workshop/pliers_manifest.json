@@ -131,5 +131,6 @@
       "humanoidCrossCheck": true,
       "maxDurationSeconds": 5
     }
-  ]
+  ],
+  "commonName": "Pliers"
 }

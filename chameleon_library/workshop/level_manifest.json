@@ -116,5 +116,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 3
     }
-  ]
+  ],
+  "commonName": "Level"
 }

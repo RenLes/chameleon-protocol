@@ -170,5 +170,6 @@
     "certTxId": null,
     "status": "certified",
     "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
-  }
+  },
+  "commonName": "Teaspoon"
 }

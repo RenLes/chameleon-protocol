@@ -128,5 +128,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 2
     }
-  ]
+  ],
+  "commonName": "Alarm Clock"
 }

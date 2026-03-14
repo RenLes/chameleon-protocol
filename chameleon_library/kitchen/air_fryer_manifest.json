@@ -7,7 +7,13 @@
   "description": "Countertop air fryer for oil-free cooking using rapid hot air circulation.",
   "manufacturer": "Generic",
   "category": "kitchen",
-  "tags": ["kitchen", "appliance", "cooking", "air_fryer", "countertop"],
+  "tags": [
+    "kitchen",
+    "appliance",
+    "cooking",
+    "air_fryer",
+    "countertop"
+  ],
   "physicalProperties": {
     "material": "plastic_and_metal",
     "weightKg": 3.2,
@@ -33,7 +39,10 @@
         "requiresHeatGlove": true
       }
     ],
-    "placementSurfaces": ["countertop", "flat_surface"],
+    "placementSurfaces": [
+      "countertop",
+      "flat_surface"
+    ],
     "dimensions": {
       "heightCm": 35,
       "widthCm": 30,
@@ -48,8 +57,14 @@
     "humanContactMaxTempCelsius": 50,
     "emergencyStop": true,
     "noHumanContactWhenHot": true,
-    "prohibitedActions": ["touch_heating_element", "operate_without_basket", "submerge_in_water"],
-    "requiredPPE": ["heat_gloves"],
+    "prohibitedActions": [
+      "touch_heating_element",
+      "operate_without_basket",
+      "submerge_in_water"
+    ],
+    "requiredPPE": [
+      "heat_gloves"
+    ],
     "safeDistanceMeters": 0.5,
     "humanoidCrossCheckRequired": false
   },
@@ -67,11 +82,13 @@
     "certDate": "2026-03-14",
     "certTxId": "cert-tx-CHA-KIT-AFR-001-20260314",
     "status": "certified",
-    "notes": "Chameleon Certified — safety and schema validated by Hub v1.0."
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0."
   },
   "matterAPI": {
     "endpoint": "matter://kitchen/CHA-KIT-AFR-001",
-    "clusters": ["OnOff"],
+    "clusters": [
+      "OnOff"
+    ],
     "supported": true,
     "matterId": "0xCHA1"
   },
@@ -79,7 +96,10 @@
     {
       "id": "insert_food",
       "description": "Insert food items into the air fryer basket.",
-      "requiredSensors": ["proximity", "force"],
+      "requiredSensors": [
+        "proximity",
+        "force"
+      ],
       "requiresVC": false,
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 30
@@ -87,7 +107,10 @@
     {
       "id": "start_cook",
       "description": "Start the air fryer cooking cycle at configured temperature and time.",
-      "requiredSensors": ["temperature", "timer"],
+      "requiredSensors": [
+        "temperature",
+        "timer"
+      ],
       "requiresVC": false,
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 1800
@@ -95,10 +118,15 @@
     {
       "id": "remove_basket",
       "description": "Remove the cooked food basket from the air fryer after cycle completion.",
-      "requiredSensors": ["temperature", "force", "proximity"],
+      "requiredSensors": [
+        "temperature",
+        "force",
+        "proximity"
+      ],
       "requiresVC": false,
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 20
     }
-  ]
+  ],
+  "commonName": "Air Fryer"
 }

@@ -132,5 +132,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 3
     }
-  ]
+  ],
+  "commonName": "Soap Dispenser"
 }

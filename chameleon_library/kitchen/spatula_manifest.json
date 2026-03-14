@@ -117,5 +117,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 5
     }
-  ]
+  ],
+  "commonName": "Spatula"
 }

@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:living_room:newspaper-v1",
+  "objectClass": "living_room.object",
+  "commonName": "Newspaper",
+  "manufacturer": "Generic",
+  "category": "living_room",
+  "physicalProperties": {
+    "massKg": 0.15,
+    "graspPoints": [
+      {
+        "id": "edge",
+        "type": "pinch_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "hand_to_person": {
+      "maxDurationSeconds": 5,
+      "parameters": {
+        "gripForceN": {
+          "default": 1.5,
+          "min": 0.5,
+          "max": 3.0
+        },
+        "extendDistanceCm": {
+          "default": 30,
+          "min": 10,
+          "max": 60
+        },
+        "tiltAngleDeg": {
+          "default": 15,
+          "min": 0,
+          "max": 30
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 4,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

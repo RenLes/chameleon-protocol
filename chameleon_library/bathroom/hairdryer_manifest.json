@@ -137,5 +137,6 @@
       "maxDurationSeconds": 5,
       "precondition": "body_temp_celsius_lt_45"
     }
-  ]
+  ],
+  "commonName": "Hairdryer"
 }

@@ -100,7 +100,7 @@
     "certDate": "2026-03-13",
     "certTxId": null,
     "status": "certified",
-    "notes": "Chameleon Certified — safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
   },
   "matterAPI": {
     "endpoint": "matter://kitchen/kettle/CHA-KIT-001",
@@ -166,5 +166,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 13.8808
     }
-  ]
+  ],
+  "commonName": "Stovetop Kettle"
 }

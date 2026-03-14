@@ -117,5 +117,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 10
     }
-  ]
+  ],
+  "commonName": "Cutting Board"
 }

@@ -79,7 +79,7 @@ Validated on **NVIDIA RTX 4090** (Vast.ai cloud, Ubuntu 22.04, CUDA 12.1) — Ma
 
 ```
 Chameleon/
-├── chameleon_library/           ← 38 certified object manifests
+├── chameleon_library/           ← 52 certified object manifests
 │   ├── kitchen/                 ← kettle, knife, microwave, blender...
 │   ├── workshop/                ← drill, saw, hammer, wrench...
 │   ├── living_room/             ← remote, lamp, TV stand...
@@ -195,11 +195,13 @@ Every object in `chameleon_library/` follows this schema:
 
 | Category | Objects |
 |----------|---------|
-| 🍳 Kitchen | kettle, air fryer, microwave, blender, coffee maker, knife, cutting board, spatula, toaster |
+| 🍳 Kitchen | kettle, electric kettle, air fryer, microwave, blender, coffee maker, knife, cutting board, chopping board, spatula, toaster, frying pan |
 | 🔧 Workshop | screwdriver, drill, measuring tape, level, hammer, wrench, pliers, saw |
-| 🛋 Living Room | remote control, lamp, picture frame, houseplant, couch cushion, TV stand |
-| 🚿 Bathroom | toothbrush, hairdryer, towel rail, soap dispenser, shower curtain |
-| 🛏 Bedroom | alarm clock, pillow, clothes hanger, bedside table, blanket |
+| 🛋 Living Room | remote control, lamp, picture frame, houseplant, couch cushion, TV stand, newspaper, vase |
+| 🚿 Bathroom | toothbrush, hairdryer, towel rail, soap dispenser, shower curtain, bath towel |
+| 🛏 Bedroom | alarm clock, pillow, clothes hanger, bedside table, blanket, reading lamp |
+| 💼 Office | laptop, pen, stapler, scissors |
+| 🌿 Garden | watering can, trowel, garden hose |
 | 💊 Healthcare | medication dispenser |
 | 🔒 Security | door lock |
 
@@ -239,7 +241,7 @@ Write optimised parameters back to manifest
 ## Roadmap
 
 - [x] Protocol v1.0 specification
-- [x] 38-object certified manifest library
+- [x] 52-object certified manifest library (9 categories) ✅
 - [x] Karpathy optimisation loop
 - [x] Isaac Lab / stub physics server
 - [x] Certification Hub (FastAPI + W3C VC)

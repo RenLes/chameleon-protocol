@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:garden:garden-hose-v1",
+  "objectClass": "garden.tool",
+  "commonName": "Garden Hose",
+  "manufacturer": "Generic",
+  "category": "garden",
+  "physicalProperties": {
+    "massKg": 1.2,
+    "graspPoints": [
+      {
+        "id": "nozzle",
+        "type": "power_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "spray": {
+      "maxDurationSeconds": 60,
+      "parameters": {
+        "nozzleAngleDeg": {
+          "default": 45,
+          "min": 0,
+          "max": 90
+        },
+        "flowRatePercent": {
+          "default": 50,
+          "min": 10,
+          "max": 100
+        },
+        "sweepAngleDeg": {
+          "default": 30,
+          "min": 0,
+          "max": 120
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 10,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

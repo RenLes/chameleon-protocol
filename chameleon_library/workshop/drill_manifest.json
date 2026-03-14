@@ -144,5 +144,6 @@
       "humanoidCrossCheck": true,
       "maxDurationSeconds": 5
     }
-  ]
+  ],
+  "commonName": "Drill"
 }

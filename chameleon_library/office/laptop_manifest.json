@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:office:laptop-v1",
+  "objectClass": "office.electronics",
+  "commonName": "Laptop Computer",
+  "manufacturer": "Generic",
+  "category": "office",
+  "physicalProperties": {
+    "massKg": 1.8,
+    "graspPoints": [
+      {
+        "id": "base_edge",
+        "type": "pinch_grasp",
+        "side": "both"
+      }
+    ]
+  },
+  "actions": {
+    "open_lid": {
+      "maxDurationSeconds": 5,
+      "parameters": {
+        "liftAngleDeg": {
+          "default": 110,
+          "min": 90,
+          "max": 135
+        },
+        "openForceN": {
+          "default": 3.0,
+          "min": 1.0,
+          "max": 6.0
+        },
+        "approachSpeedCms": {
+          "default": 4.0,
+          "min": 1.0,
+          "max": 10.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 8,
+    "maxTemperatureCelsius": 50,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:bathroom:bath-towel-v1",
+  "objectClass": "bathroom.linen",
+  "commonName": "Bath Towel",
+  "manufacturer": "Generic",
+  "category": "bathroom",
+  "physicalProperties": {
+    "massKg": 0.5,
+    "graspPoints": [
+      {
+        "id": "corner",
+        "type": "pinch_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "hand_to_person": {
+      "maxDurationSeconds": 5,
+      "parameters": {
+        "gripForceN": {
+          "default": 2.0,
+          "min": 0.5,
+          "max": 4.0
+        },
+        "extendDistanceCm": {
+          "default": 40,
+          "min": 20,
+          "max": 70
+        },
+        "foldAngleDeg": {
+          "default": 0,
+          "min": 0,
+          "max": 90
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 5,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

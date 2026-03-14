@@ -1,0 +1,79 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:kitchen:frying-pan-v1",
+  "objectClass": "kitchen.cookware",
+  "commonName": "Frying Pan",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "physicalProperties": {
+    "massKg": 1.2,
+    "fullWeightKg": 2.5,
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "place_on_stove": {
+      "maxDurationSeconds": 10,
+      "parameters": {
+        "liftHeightCm": {
+          "default": 20,
+          "min": 10,
+          "max": 40
+        },
+        "tiltAngleDeg": {
+          "default": 0,
+          "min": -10,
+          "max": 10
+        },
+        "placeForceN": {
+          "default": 5.0,
+          "min": 2.0,
+          "max": 10.0
+        }
+      }
+    },
+    "flip_food": {
+      "maxDurationSeconds": 3,
+      "parameters": {
+        "flipAngleDeg": {
+          "default": 150,
+          "min": 120,
+          "max": 180
+        },
+        "flipSpeedDegS": {
+          "default": 90,
+          "min": 45,
+          "max": 180
+        },
+        "wristForceN": {
+          "default": 8.0,
+          "min": 3.0,
+          "max": 15.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 15,
+    "maxTemperatureCelsius": 200,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:office:stapler-v1",
+  "objectClass": "office.stationery",
+  "commonName": "Desktop Stapler",
+  "manufacturer": "Generic",
+  "category": "office",
+  "physicalProperties": {
+    "massKg": 0.35,
+    "graspPoints": [
+      {
+        "id": "body",
+        "type": "power_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "staple": {
+      "maxDurationSeconds": 3,
+      "parameters": {
+        "pressForceN": {
+          "default": 15.0,
+          "min": 8.0,
+          "max": 25.0
+        },
+        "alignOffsetMm": {
+          "default": 10.0,
+          "min": 5.0,
+          "max": 20.0
+        },
+        "pressSpeedCms": {
+          "default": 3.0,
+          "min": 1.0,
+          "max": 6.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 25,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

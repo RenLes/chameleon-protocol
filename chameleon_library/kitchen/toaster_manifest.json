@@ -79,12 +79,12 @@
     "commandSigningRequired": false
   },
   "certificationStatus": {
-    "certified": false,
-    "certifier": null,
-    "certDate": null,
-    "certTxId": null,
-    "status": "pending",
-    "notes": "Pending certification \u2014 submit to POST /certify to complete"
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0x5f8fbb2f4e1cd49a",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
   },
   "matterAPI": {
     "endpoint": "matter://kitchen/CHA-KIT-STP-64F1A3B6",
@@ -145,5 +145,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 120
     }
-  ]
+  ],
+  "commonName": "Toaster"
 }

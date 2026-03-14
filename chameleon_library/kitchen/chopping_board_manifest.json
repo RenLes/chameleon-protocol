@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:kitchen:chopping-board-v1",
+  "objectClass": "kitchen.utensil",
+  "commonName": "Chopping Board",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "physicalProperties": {
+    "massKg": 0.8,
+    "graspPoints": [
+      {
+        "id": "edge",
+        "type": "pinch_grasp",
+        "side": "both"
+      }
+    ]
+  },
+  "actions": {
+    "position": {
+      "maxDurationSeconds": 5,
+      "parameters": {
+        "slideDistanceCm": {
+          "default": 10,
+          "min": 0,
+          "max": 30
+        },
+        "placeForceN": {
+          "default": 3.0,
+          "min": 1.0,
+          "max": 6.0
+        },
+        "alignAngleDeg": {
+          "default": 0,
+          "min": -15,
+          "max": 15
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 8,
+    "maxTemperatureCelsius": 60,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

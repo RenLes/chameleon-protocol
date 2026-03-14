@@ -1,0 +1,58 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:office:pen-v1",
+  "objectClass": "office.stationery",
+  "commonName": "Ballpoint Pen",
+  "manufacturer": "Generic",
+  "category": "office",
+  "physicalProperties": {
+    "massKg": 0.02,
+    "graspPoints": [
+      {
+        "id": "barrel",
+        "type": "pinch_grasp",
+        "side": "right"
+      }
+    ]
+  },
+  "actions": {
+    "write": {
+      "maxDurationSeconds": 60,
+      "parameters": {
+        "pressureN": {
+          "default": 1.0,
+          "min": 0.3,
+          "max": 2.5
+        },
+        "strokeSpeedCms": {
+          "default": 3.0,
+          "min": 1.0,
+          "max": 8.0
+        },
+        "gripAngleDeg": {
+          "default": 60,
+          "min": 40,
+          "max": 80
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 3,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

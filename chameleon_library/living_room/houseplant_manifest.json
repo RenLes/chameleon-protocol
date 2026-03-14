@@ -121,5 +121,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 10
     }
-  ]
+  ],
+  "commonName": "Houseplant"
 }

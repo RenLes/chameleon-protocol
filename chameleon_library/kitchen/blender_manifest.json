@@ -145,5 +145,6 @@
       "humanoidCrossCheck": false,
       "maxDurationSeconds": 20
     }
-  ]
+  ],
+  "commonName": "Blender"
 }

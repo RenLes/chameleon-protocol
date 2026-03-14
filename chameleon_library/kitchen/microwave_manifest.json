@@ -145,5 +145,6 @@
       "maxDurationSeconds": 15,
       "precondition": "body_temp_celsius_lt_45"
     }
-  ]
+  ],
+  "commonName": "Microwave"
 }

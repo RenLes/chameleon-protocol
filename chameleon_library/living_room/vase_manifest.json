@@ -1,0 +1,59 @@
+{
+  "protocolVersion": "1.0",
+  "objectId": "did:chameleon:living_room:vase-v1",
+  "objectClass": "living_room.fragile",
+  "commonName": "Decorative Vase",
+  "manufacturer": "Generic",
+  "category": "living_room",
+  "physicalProperties": {
+    "massKg": 0.5,
+    "fullWeightKg": 1.2,
+    "graspPoints": [
+      {
+        "id": "body",
+        "type": "pinch_grasp",
+        "side": "both"
+      }
+    ]
+  },
+  "actions": {
+    "relocate": {
+      "maxDurationSeconds": 8,
+      "parameters": {
+        "gripForceN": {
+          "default": 3.0,
+          "min": 1.5,
+          "max": 5.0
+        },
+        "liftHeightCm": {
+          "default": 15,
+          "min": 5,
+          "max": 30
+        },
+        "moveSpeedCms": {
+          "default": 3.0,
+          "min": 1.0,
+          "max": 6.0
+        }
+      }
+    }
+  },
+  "safety": {
+    "maxForceNewtons": 5,
+    "maxTemperatureCelsius": 40,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "auditLogRequired": false,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "0xe34a4e64",
+    "status": "certified",
+    "notes": "Certified via Chameleon CLI v1.0"
+  }
+}

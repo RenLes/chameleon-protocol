@@ -138,5 +138,6 @@
       "maxDurationSeconds": 15,
       "precondition": "brew_complete"
     }
-  ]
+  ],
+  "commonName": "Coffee Maker"
 }
