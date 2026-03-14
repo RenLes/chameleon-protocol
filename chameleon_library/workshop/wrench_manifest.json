@@ -1,0 +1,136 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "workshop.tool.wrench",
+  "objectId": "CHA-WRK-WRN-001",
+  "displayName": "Adjustable Wrench",
+  "description": "25cm adjustable wrench for nuts and bolts. Cross-check required.",
+  "manufacturer": "Generic",
+  "category": "workshop",
+  "tags": [
+    "tool",
+    "wrench",
+    "workshop"
+  ],
+  "physicalProperties": {
+    "material": "steel",
+    "weightKg": 0.4,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 25.0,
+      "widthCm": 6.0,
+      "depthCm": 2.0
+    },
+    "placementSurfaces": [
+      "tool_holder",
+      "flat_surface"
+    ],
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grip",
+        "location": "handle",
+        "forceMaxNewtons": 25,
+        "forceRecommendedNewtons": 15.0,
+        "fingerSpreadMm": 40,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 25,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "swing_at_human",
+      "use_as_weapon",
+      "strike_human"
+    ],
+    "requiredPPE": [
+      "safety_glasses",
+      "gloves"
+    ],
+    "safeDistanceMeters": 0.5,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:workshop:CHA-WRK-WRN-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-WRK-WRN-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://workshop/CHA-WRK-WRN-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA2005"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up wrench by handle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "tighten_bolt",
+      "description": "Apply wrench to tighten fastener",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "loosen_bolt",
+      "description": "Apply wrench to loosen fastener",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "place_down",
+      "description": "Place wrench in tool holder",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

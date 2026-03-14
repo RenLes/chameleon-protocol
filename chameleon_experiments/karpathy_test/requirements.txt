@@ -1,0 +1,13 @@
+# Chameleon Karpathy Protocol — Python dependencies
+# All optional — script degrades gracefully without any of these
+
+# Rich console output & progress bars
+tqdm>=4.66.0
+termcolor>=2.4.0
+
+# Plotting (offline, saves PNG to disk)
+matplotlib>=3.8.0
+
+# Used for future Isaac Sim RPC integration (not needed for mock mode)
+# httpx>=0.27.0
+# websockets>=12.0

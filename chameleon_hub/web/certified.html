@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chameleon Certified Objects</title>
+  <style>
+    /* ── Reset + base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0d1117;
+      --bg-card:    #161b22;
+      --bg-hover:   #1c2330;
+      --border:     #30363d;
+      --accent:     #58a6ff;
+      --accent-2:   #3fb950;
+      --accent-warn:#e3b341;
+      --accent-rev: #f85149;
+      --text:       #e6edf3;
+      --text-muted: #8b949e;
+      --badge-bg:   #238636;
+      --badge-text: #aff5b4;
+      --pending-bg: #b45309;
+      --pending-txt:#fde68a;
+      --font:       -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent-2);
+    }
+
+    .header-tagline {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-left: auto;
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* ── Hero banner ── */
+    .hero {
+      background: linear-gradient(135deg, #0d1b2a 0%, #0d2136 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 .badge-cha {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 640px;
+      margin: 0.5rem auto 1.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-2);
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Controls bar ── */
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 220px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus { border-color: var(--accent); }
+
+    .filter-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 0.9rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Cards grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      background: var(--bg-hover);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.22rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-certified  { background: var(--badge-bg);   color: var(--badge-text); }
+    .badge-pending    { background: var(--pending-bg); color: var(--pending-txt); }
+    .badge-revoked    { background: #3d1a1a;           color: var(--accent-rev); }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin: 0.9rem 0;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+    }
+
+    .meta-key   { color: var(--text-muted); }
+    .meta-value { color: var(--text);       font-weight: 500; }
+    .meta-value.safety-strict  { color: #f85149; }
+    .meta-value.safety-standard { color: var(--accent-warn); }
+    .meta-value.safety-low     { color: var(--accent-2); }
+
+    .tx-id {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      margin-top: 0.5rem;
+      word-break: break-all;
+    }
+
+    .card-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .card-actions .btn {
+      flex: 1;
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 0.4rem 0.6rem;
+    }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-state h2 { color: var(--text); margin-bottom: 0.5rem; }
+
+    /* ── Loading ── */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Refresh indicator ── */
+    .last-updated {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header { flex-wrap: wrap; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🦎 <span>Chameleon</span> Protocol</div>
+  <span class="header-tagline">Manufacturer Certification Registry · v1.0</span>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1><span class="badge-cha">Chameleon</span> Certified Objects</h1>
+    <p>
+      Every object below has passed Chameleon safety validation, schema compliance checks,
+      and received a DID-signed Verifiable Credential from the Chameleon Hub.
+      Safe for humanoid robot interaction.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number" id="stat-total">–</div>
+        <div class="stat-label">Certified Objects</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="stat-manufacturers">–</div>
+        <div class="stat-label">Manufacturers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="stat-categories">–</div>
+        <div class="stat-label">Categories</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <div class="controls">
+    <input
+      class="search-box"
+      type="text"
+      id="search"
+      placeholder="Search by name, manufacturer, or object class…"
+      oninput="renderCards()"
+    />
+    <select class="filter-select" id="category-filter" onchange="renderCards()">
+      <option value="">All categories</option>
+    </select>
+    <select class="filter-select" id="safety-filter" onchange="renderCards()">
+      <option value="">All safety levels</option>
+      <option value="strict">Strict</option>
+      <option value="standard">Standard</option>
+    </select>
+    <button class="btn btn-primary" onclick="loadRegistry()">↻ Refresh</button>
+    <span class="last-updated" id="last-updated"></span>
+  </div>
+
+  <!-- Cards -->
+  <div id="container">
+    <div class="loading">Loading certified objects from Hub…</div>
+  </div>
+
+</main>
+
+<footer>
+  Chameleon Protocol v1.0 · Open-source core (MIT) ·
+  <a href="/docs" target="_blank">API Docs</a> ·
+  <a href="https://github.com/chameleon-protocol" target="_blank">GitHub</a> ·
+  Hub DID: <code>did:chameleon:hub:v1</code>
+</footer>
+
+<script>
+  // ── State ──────────────────────────────────────────────────────────────────
+  let allObjects = [];
+
+  // ── Load from Hub API ──────────────────────────────────────────────────────
+  async function loadRegistry() {
+    document.getElementById("container").innerHTML =
+      '<div class="loading">Loading…</div>';
+
+    try {
+      const resp = await fetch("/certify/registry");
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      allObjects = data.objects || [];
+
+      // Update stats
+      const manufacturers = new Set(allObjects.map(o => o.manufacturer)).size;
+      const categories    = new Set(allObjects.map(o => o.category)).size;
+      document.getElementById("stat-total").textContent         = allObjects.length;
+      document.getElementById("stat-manufacturers").textContent = manufacturers;
+      document.getElementById("stat-categories").textContent    = categories;
+      document.getElementById("last-updated").textContent =
+        "Updated " + new Date().toLocaleTimeString();
+
+      // Populate category filter
+      const cats = [...new Set(allObjects.map(o => o.category).filter(Boolean))].sort();
+      const sel  = document.getElementById("category-filter");
+      sel.innerHTML = '<option value="">All categories</option>';
+      cats.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c; opt.textContent = c;
+        sel.appendChild(opt);
+      });
+
+      // Seed with demo objects if registry is empty (dev mode)
+      if (allObjects.length === 0) seedDemoObjects();
+
+    } catch (e) {
+      // Hub not running — show demo data
+      console.warn("Hub unreachable — showing demo data:", e.message);
+      seedDemoObjects();
+    }
+
+    renderCards();
+  }
+
+  // ── Demo seed — full 38-object catalog (shown when Hub is offline) ──────────
+  function seedDemoObjects() {
+    allObjects = [
+      // ── Kitchen (10) ──────────────────────────────────────────────────────
+      { objectId:"CHA-KIT-001",     displayName:"Stovetop Kettle",  manufacturer:"Generic", objectClass:"kitchen.appliance.kettle",       category:"kitchen",     certDate:"2026-03-13", certTxId:"cert-tx-CHA-KIT-001",        safetyLevel:"strict",   description:"Standard stovetop kettle for boiling water." },
+      { objectId:"CHA-KIT-002",     displayName:"Smart Fridge",     manufacturer:"Generic", objectClass:"kitchen.appliance.fridge",       category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-002",        safetyLevel:"strict",   description:"Dual-zone smart refrigerator with inventory ledger." },
+      { objectId:"CHA-KIT-003",     displayName:"Teaspoon",         manufacturer:"Generic", objectClass:"kitchen.utensil.teaspoon",       category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-003",        safetyLevel:"standard", description:"Precision 5ml teaspoon." },
+      { objectId:"CHA-KIT-AFR-001", displayName:"Air Fryer",        manufacturer:"Generic", objectClass:"kitchen.appliance.air_fryer",    category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-AFR-001-20260314", safetyLevel:"strict",   description:"Countertop air fryer with removable basket." },
+      { objectId:"CHA-KIT-MWV-001", displayName:"Microwave Oven",   manufacturer:"Generic", objectClass:"kitchen.appliance.microwave",    category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-MWV-001-20260314", safetyLevel:"strict",   description:"Countertop microwave oven." },
+      { objectId:"CHA-KIT-BLD-001", displayName:"Blender",          manufacturer:"Generic", objectClass:"kitchen.appliance.blender",      category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-BLD-001-20260314", safetyLevel:"strict",   description:"Countertop blender with glass jug." },
+      { objectId:"CHA-KIT-CMK-001", displayName:"Coffee Maker",     manufacturer:"Generic", objectClass:"kitchen.appliance.coffee_maker", category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-CMK-001-20260314", safetyLevel:"strict",   description:"Single-serve pod coffee maker." },
+      { objectId:"CHA-KIT-KNF-001", displayName:"Chef's Knife",     manufacturer:"Generic", objectClass:"kitchen.utensil.knife",          category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-KNF-001-20260314", safetyLevel:"strict",   description:"20cm chef's knife. Cross-check required." },
+      { objectId:"CHA-KIT-CTB-001", displayName:"Cutting Board",    manufacturer:"Generic", objectClass:"kitchen.utensil.cutting_board",  category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-CTB-001-20260314", safetyLevel:"standard", description:"Large wooden cutting board." },
+      { objectId:"CHA-KIT-SPT-001", displayName:"Spatula",          manufacturer:"Generic", objectClass:"kitchen.utensil.spatula",        category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-SPT-001-20260314", safetyLevel:"standard", description:"Silicone-head spatula." },
+      { objectId:"CHA-KIT-TST-001", displayName:"Toaster",          manufacturer:"Generic", objectClass:"kitchen.appliance.toaster",      category:"kitchen",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-KIT-TST-001",        safetyLevel:"strict",   description:"2-slot smart toaster with auto-eject." },
+      // ── Workshop (9) ──────────────────────────────────────────────────────
+      { objectId:"CHA-WRK-001",     displayName:"Claw Hammer",      manufacturer:"Generic", objectClass:"workshop.tool.hammer",           category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-001",        safetyLevel:"strict",   description:"550g claw hammer. Cross-check required." },
+      { objectId:"CHA-WRK-SDV-001", displayName:"Screwdriver",      manufacturer:"Generic", objectClass:"workshop.tool.screwdriver",      category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-SDV-001-20260314", safetyLevel:"strict",   description:"Phillips-head screwdriver." },
+      { objectId:"CHA-WRK-DRL-001", displayName:"Power Drill",      manufacturer:"Generic", objectClass:"workshop.tool.drill",            category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-DRL-001-20260314", safetyLevel:"strict",   description:"Cordless power drill. Cross-check required." },
+      { objectId:"CHA-WRK-MTP-001", displayName:"Measuring Tape",   manufacturer:"Generic", objectClass:"workshop.tool.measuring_tape",   category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-MTP-001-20260314", safetyLevel:"standard", description:"5m retractable steel measuring tape." },
+      { objectId:"CHA-WRK-LVL-001", displayName:"Spirit Level",     manufacturer:"Generic", objectClass:"workshop.tool.level",            category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-LVL-001-20260314", safetyLevel:"standard", description:"60cm aluminium spirit level." },
+      { objectId:"CHA-WRK-WRN-001", displayName:"Adjustable Wrench",manufacturer:"Generic", objectClass:"workshop.tool.wrench",           category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-WRN-001-20260314", safetyLevel:"strict",   description:"25cm adjustable wrench. Cross-check required." },
+      { objectId:"CHA-WRK-PLR-001", displayName:"Pliers",           manufacturer:"Generic", objectClass:"workshop.tool.pliers",           category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-PLR-001-20260314", safetyLevel:"strict",   description:"Combination pliers. Cross-check required." },
+      { objectId:"CHA-WRK-SAW-001", displayName:"Hand Saw",         manufacturer:"Generic", objectClass:"workshop.tool.saw",              category:"workshop",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-WRK-SAW-001-20260314", safetyLevel:"strict",   description:"550mm hand saw. Cross-check required." },
+      // ── Living Room (7) ───────────────────────────────────────────────────
+      { objectId:"CHA-LVR-001",     displayName:"Hardcover Book",   manufacturer:"Generic", objectClass:"living_room.object.book",        category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LVR-001",        safetyLevel:"standard", description:"Hardcover book. Handle with care." },
+      { objectId:"CHA-LIV-RMC-001", displayName:"Remote Control",   manufacturer:"Generic", objectClass:"living_room.device.remote_control", category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LIV-RMC-001-20260314", safetyLevel:"standard", description:"Universal TV remote control." },
+      { objectId:"CHA-LIV-LMP-001", displayName:"Floor Lamp",       manufacturer:"Generic", objectClass:"living_room.appliance.lamp",     category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LIV-LMP-001-20260314", safetyLevel:"standard", description:"Adjustable floor lamp." },
+      { objectId:"CHA-LIV-PFR-001", displayName:"Picture Frame",    manufacturer:"Generic", objectClass:"living_room.decor.picture_frame",category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LIV-PFR-001-20260314", safetyLevel:"standard", description:"A4 wooden picture frame. Fragile." },
+      { objectId:"CHA-LIV-HPL-001", displayName:"Houseplant",       manufacturer:"Generic", objectClass:"living_room.decor.houseplant",   category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LIV-HPL-001-20260314", safetyLevel:"standard", description:"Medium potted houseplant." },
+      { objectId:"CHA-LIV-CSH-001", displayName:"Couch Cushion",    manufacturer:"Generic", objectClass:"living_room.furniture.couch_cushion", category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LIV-CSH-001-20260314", safetyLevel:"standard", description:"Square sofa cushion." },
+      { objectId:"CHA-LIV-TVS-001", displayName:"TV Stand",         manufacturer:"Generic", objectClass:"living_room.furniture.tv_stand", category:"living_room", certDate:"2026-03-14", certTxId:"cert-tx-CHA-LIV-TVS-001-20260314", safetyLevel:"standard", description:"Low-profile wooden TV stand." },
+      // ── Bathroom (5) ──────────────────────────────────────────────────────
+      { objectId:"CHA-BTH-TBR-001", displayName:"Toothbrush",       manufacturer:"Generic", objectClass:"bathroom.personal_care.toothbrush",  category:"bathroom",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-BTH-TBR-001-20260314", safetyLevel:"standard", description:"Standard manual toothbrush." },
+      { objectId:"CHA-BTH-HDR-001", displayName:"Hair Dryer",       manufacturer:"Generic", objectClass:"bathroom.appliance.hairdryer",    category:"bathroom",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-BTH-HDR-001-20260314", safetyLevel:"strict",   description:"1800W hair dryer. No contact when hot." },
+      { objectId:"CHA-BTH-TWR-001", displayName:"Towel Rail",       manufacturer:"Generic", objectClass:"bathroom.fixture.towel_rail",     category:"bathroom",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-BTH-TWR-001-20260314", safetyLevel:"standard", description:"Wall-mounted heated towel rail." },
+      { objectId:"CHA-BTH-SDP-001", displayName:"Soap Dispenser",   manufacturer:"Generic", objectClass:"bathroom.accessory.soap_dispenser",category:"bathroom",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-BTH-SDP-001-20260314", safetyLevel:"standard", description:"Pump-action liquid soap dispenser." },
+      { objectId:"CHA-BTH-SHC-001", displayName:"Shower Curtain",   manufacturer:"Generic", objectClass:"bathroom.fixture.shower_curtain", category:"bathroom",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-BTH-SHC-001-20260314", safetyLevel:"standard", description:"Fabric shower curtain on rod." },
+      // ── Bedroom (5) ───────────────────────────────────────────────────────
+      { objectId:"CHA-BED-ACK-001", displayName:"Alarm Clock",      manufacturer:"Generic", objectClass:"bedroom.device.alarm_clock",      category:"bedroom",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-BED-ACK-001-20260314", safetyLevel:"standard", description:"Digital bedside alarm clock." },
+      { objectId:"CHA-BED-PLW-001", displayName:"Pillow",           manufacturer:"Generic", objectClass:"bedroom.furniture.pillow",        category:"bedroom",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-BED-PLW-001-20260314", safetyLevel:"standard", description:"Standard sleeping pillow." },
+      { objectId:"CHA-BED-CHG-001", displayName:"Clothes Hanger",   manufacturer:"Generic", objectClass:"bedroom.accessory.clothes_hanger",category:"bedroom",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-BED-CHG-001-20260314", safetyLevel:"standard", description:"Standard plastic clothes hanger." },
+      { objectId:"CHA-BED-BST-001", displayName:"Bedside Table",    manufacturer:"Generic", objectClass:"bedroom.furniture.bedside_table", category:"bedroom",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-BED-BST-001-20260314", safetyLevel:"standard", description:"Small wooden bedside table with drawer." },
+      { objectId:"CHA-BED-BLK-001", displayName:"Blanket",          manufacturer:"Generic", objectClass:"bedroom.furniture.blanket",       category:"bedroom",     certDate:"2026-03-14", certTxId:"cert-tx-CHA-BED-BLK-001-20260314", safetyLevel:"standard", description:"Soft fleece blanket." },
+      // ── Healthcare (1) ────────────────────────────────────────────────────
+      { objectId:"CHA-HLT-001",     displayName:"Medication Dispenser", manufacturer:"Generic", objectClass:"healthcare.device.medication_dispenser", category:"healthcare", certDate:"2026-03-14", certTxId:"cert-tx-CHA-HLT-001-20260314", safetyLevel:"strict", description:"Automated medication dispenser." },
+      // ── Security (1) ──────────────────────────────────────────────────────
+      { objectId:"CHA-SEC-001",     displayName:"Smart Door Lock",  manufacturer:"Generic", objectClass:"security.device.door_lock",       category:"security",    certDate:"2026-03-14", certTxId:"cert-tx-CHA-SEC-001-20260314", safetyLevel:"strict", description:"Connected smart door lock." },
+    ];
+
+    const cats = [...new Set(allObjects.map(o => o.category))].sort();
+    const manufacturers = new Set(allObjects.map(o => o.manufacturer)).size;
+
+    document.getElementById("stat-total").textContent         = allObjects.length;
+    document.getElementById("stat-manufacturers").textContent = manufacturers;
+    document.getElementById("stat-categories").textContent    = cats.length;
+    document.getElementById("last-updated").textContent       = "Demo mode — Hub offline (38 objects)";
+
+    const sel = document.getElementById("category-filter");
+    sel.innerHTML = '<option value="">All categories</option>';
+    cats.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c; opt.textContent = c.replace(/_/g," ");
+      sel.appendChild(opt);
+    });
+  }
+
+  // ── Render cards ──────────────────────────────────────────────────────────
+  function renderCards() {
+    const search   = document.getElementById("search").value.toLowerCase();
+    const catFil   = document.getElementById("category-filter").value;
+    const safeFil  = document.getElementById("safety-filter").value;
+
+    let filtered = allObjects.filter(o => {
+      const matchSearch =
+        !search ||
+        (o.displayName  || "").toLowerCase().includes(search) ||
+        (o.manufacturer || "").toLowerCase().includes(search) ||
+        (o.objectClass  || "").toLowerCase().includes(search) ||
+        (o.objectId     || "").toLowerCase().includes(search);
+      const matchCat   = !catFil  || o.category    === catFil;
+      const matchSafe  = !safeFil || o.safetyLevel  === safeFil;
+      return matchSearch && matchCat && matchSafe;
+    });
+
+    const container = document.getElementById("container");
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <h2>No objects found</h2>
+          <p>Try adjusting your search or filters.</p>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = `<div class="grid">${filtered.map(cardHTML).join("")}</div>`;
+  }
+
+  // ── Card HTML ──────────────────────────────────────────────────────────────
+  function cardHTML(obj) {
+    const safetyClass =
+      obj.safetyLevel === "strict"   ? "safety-strict"  :
+      obj.safetyLevel === "standard" ? "safety-standard" : "";
+
+    const txShort = obj.certTxId
+      ? obj.certTxId.substring(0, 24) + "…"
+      : "–";
+
+    const categoryIcon =
+      obj.category === "kitchen"     ? "🍳" :
+      obj.category === "workshop"    ? "🔧" :
+      obj.category === "living_room" ? "🛋" :
+      obj.category === "bathroom"    ? "🚿" :
+      obj.category === "bedroom"     ? "🛏" :
+      obj.category === "healthcare"  ? "💊" :
+      obj.category === "security"    ? "🔒" : "📦";
+
+    const isHighRisk = obj.safetyLevel === "strict" &&
+      (obj.objectClass || "").match(/knife|drill|hammer|saw|screwdriver|wrench|pliers|lock|medication/);
+    return `
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">${categoryIcon} ${esc(obj.displayName)}</div>
+          <div class="card-subtitle">${esc(obj.manufacturer)} · ${esc(obj.objectClass)}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.3rem;align-items:flex-end;">
+          <span class="badge badge-certified">✓ Certified</span>
+          ${isHighRisk ? '<span class="badge" style="background:#3d1a1a;color:#f85149;font-size:0.68rem;">⚠ Cross-check</span>' : ""}
+        </div>
+      </div>
+      ${obj.description ? `<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;">${esc(obj.description)}</div>` : ""}
+
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-key">Object ID</span>
+          <span class="meta-value">${esc(obj.objectId)}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Category</span>
+          <span class="meta-value">${esc(obj.category)}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Safety level</span>
+          <span class="meta-value ${safetyClass}">${esc(obj.safetyLevel || "standard")}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Cert date</span>
+          <span class="meta-value">${esc(obj.certDate || "–")}</span>
+        </div>
+      </div>
+
+      <div class="tx-id">tx: ${esc(txShort)}</div>
+
+      <div class="card-actions">
+        <button class="btn btn-secondary"
+          onclick="viewJSON('${esc(obj.objectId)}')">View VC</button>
+        <button class="btn btn-primary"
+          onclick="copyDID('${esc(obj.objectId)}')">Copy DID</button>
+      </div>
+    </div>`;
+  }
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function esc(str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function copyDID(objectId) {
+    const did = `did:chameleon:object:${objectId}`;
+    navigator.clipboard.writeText(did).then(() => {
+      showToast(`Copied: ${did}`);
+    });
+  }
+
+  async function viewJSON(objectId) {
+    try {
+      const resp = await fetch(`/certify/${objectId}`);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      const win  = window.open("", "_blank");
+      win.document.write(
+        `<pre style="background:#0d1117;color:#e6edf3;padding:2rem;font-size:13px;">`
+        + JSON.stringify(data, null, 2) + `</pre>`
+      );
+    } catch (e) {
+      showToast(`Hub offline — VC not available (${e.message})`);
+    }
+  }
+
+  function showToast(msg) {
+    const t = document.createElement("div");
+    t.textContent = msg;
+    Object.assign(t.style, {
+      position: "fixed", bottom: "1.5rem", right: "1.5rem",
+      background: "#238636", color: "#aff5b4",
+      padding: "0.7rem 1.2rem", borderRadius: "8px",
+      fontSize: "0.85rem", fontWeight: "600",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
+      zIndex: "9999", transition: "opacity 0.3s",
+    });
+    document.body.appendChild(t);
+    setTimeout(() => { t.style.opacity = "0"; setTimeout(() => t.remove(), 300); }, 2500);
+  }
+
+  // ── Auto-refresh every 30 s when Hub is online ────────────────────────────
+  loadRegistry();
+  setInterval(loadRegistry, 30000);
+</script>
+</body>
+</html>

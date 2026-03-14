@@ -1,0 +1,123 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "security.device.door_lock",
+  "objectId": "CHA-SEC-001",
+  "displayName": "Smart Door Lock",
+  "description": "Connected smart door lock with keypad and app control.",
+  "manufacturer": "Generic",
+  "category": "security",
+  "tags": [
+    "security"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 1.2,
+    "fragile": false,
+    "spillRisk": false,
+    "graspPoints": [
+      {
+        "id": "primary",
+        "type": "power_grip",
+        "location": "body",
+        "forceMaxNewtons": 10,
+        "forceRecommendedNewtons": 6.0,
+        "fingerSpreadMm": 50,
+        "requiresHeatGlove": false
+      }
+    ],
+    "placementSurfaces": [
+      "flat_surface"
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 10,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "bypass_lock",
+      "force_open",
+      "weaponize",
+      "harm"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.2,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": true
+  },
+  "security": {
+    "did": "did:chameleon:security:CHA-SEC-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": true
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-SEC-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0."
+  },
+  "matterAPI": {
+    "endpoint": "matter://security/CHA-SEC-001",
+    "clusters": [
+      "OnOff",
+      "LockControl"
+    ],
+    "supported": true,
+    "matterId": "0xCHAS001"
+  },
+  "actions": [
+    {
+      "id": "unlock",
+      "description": "Unlock door after authentication",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "lock",
+      "description": "Lock door",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "check_status",
+      "description": "Read current lock status",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "grant_temporary_access",
+      "description": "Issue time-limited access credential",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 10
+    }
+  ]
+}

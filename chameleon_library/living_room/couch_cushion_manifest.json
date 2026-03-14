@@ -1,0 +1,132 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "living_room.furniture.couch_cushion",
+  "objectId": "CHA-LIV-CSH-001",
+  "displayName": "Couch Cushion",
+  "description": "Square sofa cushion. Soft and lightweight.",
+  "manufacturer": "Generic",
+  "category": "living_room",
+  "tags": [
+    "furniture",
+    "cushion",
+    "living_room"
+  ],
+  "physicalProperties": {
+    "material": "fabric_foam",
+    "weightKg": 0.6,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 10.0,
+      "widthCm": 45.0,
+      "depthCm": 45.0
+    },
+    "placementSurfaces": [
+      "sofa",
+      "armchair",
+      "flat_surface"
+    ],
+    "graspPoints": [
+      {
+        "id": "surface_grip",
+        "type": "pinch_grip",
+        "location": "cushion_edge",
+        "forceMaxNewtons": 6,
+        "forceRecommendedNewtons": 3.0,
+        "fingerSpreadMm": 100,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 6,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:living_room:CHA-LIV-CSH-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-LIV-CSH-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://living_room/CHA-LIV-CSH-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA3005"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up cushion",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "place_on_couch",
+      "description": "Place cushion on sofa in correct position",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "fluff",
+      "description": "Punch and reshape cushion",
+      "requiredSensors": [
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "reposition",
+      "description": "Move cushion to new position",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

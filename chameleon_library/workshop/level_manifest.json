@@ -1,0 +1,120 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "workshop.tool.level",
+  "objectId": "CHA-WRK-LVL-001",
+  "displayName": "Spirit Level",
+  "description": "60cm aluminium spirit level for checking horizontal and vertical surfaces.",
+  "manufacturer": "Generic",
+  "category": "workshop",
+  "tags": [
+    "tool",
+    "level",
+    "workshop"
+  ],
+  "physicalProperties": {
+    "material": "aluminium",
+    "weightKg": 0.4,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 4.0,
+      "widthCm": 60.0,
+      "depthCm": 3.0
+    },
+    "placementSurfaces": [
+      "flat_surface",
+      "tool_holder"
+    ],
+    "graspPoints": [
+      {
+        "id": "body_grip",
+        "type": "power_grip",
+        "location": "mid_body",
+        "forceMaxNewtons": 6,
+        "forceRecommendedNewtons": 4.0,
+        "fingerSpreadMm": 70,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 6,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:workshop:CHA-WRK-LVL-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-WRK-LVL-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://workshop/CHA-WRK-LVL-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA2004"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up spirit level",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "place_on_surface",
+      "description": "Place level on surface to check",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "read_level",
+      "description": "Read bubble indicator value",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    }
+  ]
+}

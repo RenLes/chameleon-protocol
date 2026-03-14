@@ -1,0 +1,123 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bedroom.accessory.clothes_hanger",
+  "objectId": "CHA-BED-CHG-001",
+  "displayName": "Clothes Hanger",
+  "description": "Standard plastic clothes hanger.",
+  "manufacturer": "Generic",
+  "category": "bedroom",
+  "tags": [
+    "accessory",
+    "hanger",
+    "bedroom"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 0.05,
+    "fragile": true,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 22.0,
+      "widthCm": 44.0,
+      "depthCm": 1.0
+    },
+    "placementSurfaces": [
+      "wardrobe_rail",
+      "hook"
+    ],
+    "graspPoints": [
+      {
+        "id": "hook",
+        "type": "precision_grip",
+        "location": "top_hook",
+        "forceMaxNewtons": 3,
+        "forceRecommendedNewtons": 1.5,
+        "fingerSpreadMm": 15,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 3,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "bend_hook",
+      "overload"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.05,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bedroom:CHA-BED-CHG-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BED-CHG-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bedroom/CHA-BED-CHG-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA5003"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up hanger by hook",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "hang_garment",
+      "description": "Drape and position garment on hanger",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15
+    },
+    {
+      "id": "place_on_rail",
+      "description": "Hang loaded hanger on wardrobe rail",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

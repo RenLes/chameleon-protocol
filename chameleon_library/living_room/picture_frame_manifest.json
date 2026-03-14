@@ -1,0 +1,124 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "living_room.decor.picture_frame",
+  "objectId": "CHA-LIV-PFR-001",
+  "displayName": "Picture Frame",
+  "description": "A4 wooden picture frame. Fragile \u2014 handle with care.",
+  "manufacturer": "Generic",
+  "category": "living_room",
+  "tags": [
+    "decor",
+    "picture_frame",
+    "living_room"
+  ],
+  "physicalProperties": {
+    "material": "wood_glass",
+    "weightKg": 0.4,
+    "fragile": true,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 30.0,
+      "widthCm": 25.0,
+      "depthCm": 2.0
+    },
+    "placementSurfaces": [
+      "shelf",
+      "wall",
+      "flat_surface"
+    ],
+    "graspPoints": [
+      {
+        "id": "frame_edge",
+        "type": "pinch_grip",
+        "location": "outer_frame_edge",
+        "forceMaxNewtons": 4,
+        "forceRecommendedNewtons": 2.5,
+        "fingerSpreadMm": 30,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 4,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "drop",
+      "stack_heavy_items"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:living_room:CHA-LIV-PFR-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-LIV-PFR-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://living_room/CHA-LIV-PFR-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA3003"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up frame by edges \u2014 avoid glass surface",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "hang_on_wall",
+      "description": "Position frame on wall hook",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "place_on_surface",
+      "description": "Place frame upright on shelf",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

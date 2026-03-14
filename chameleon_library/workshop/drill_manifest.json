@@ -1,0 +1,148 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "workshop.tool.drill",
+  "objectId": "CHA-WRK-DRL-001",
+  "displayName": "Power Drill",
+  "description": "Cordless power drill. HIGH RISK \u2014 humanoid cross-check and command signing required.",
+  "manufacturer": "Generic",
+  "category": "workshop",
+  "tags": [
+    "tool",
+    "drill",
+    "workshop",
+    "power_tool"
+  ],
+  "physicalProperties": {
+    "material": "plastic_steel",
+    "weightKg": 1.8,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 22.0,
+      "widthCm": 20.0,
+      "depthCm": 7.0
+    },
+    "placementSurfaces": [
+      "tool_holder",
+      "flat_surface"
+    ],
+    "graspPoints": [
+      {
+        "id": "main_handle",
+        "type": "power_grip",
+        "location": "main_handle",
+        "forceMaxNewtons": 30,
+        "forceRecommendedNewtons": 18.0,
+        "fingerSpreadMm": 55,
+        "requiresHeatGlove": false
+      },
+      {
+        "id": "secondary_handle",
+        "type": "power_grip",
+        "location": "auxiliary_handle",
+        "forceMaxNewtons": 30,
+        "forceRecommendedNewtons": 18.0,
+        "fingerSpreadMm": 45,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 30,
+    "maxTemperatureCelsius": 60,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "swing_at_human",
+      "use_as_weapon",
+      "drill_near_human",
+      "point_at_human"
+    ],
+    "requiredPPE": [
+      "safety_glasses",
+      "gloves",
+      "ear_protection"
+    ],
+    "safeDistanceMeters": 1.5,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": true
+  },
+  "security": {
+    "did": "did:chameleon:workshop:CHA-WRK-DRL-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": true
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-WRK-DRL-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://workshop/CHA-WRK-DRL-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA2002"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up drill by main handle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "position",
+      "description": "Position drill bit on target",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "drill_hole",
+      "description": "Drill hole in target material",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 30
+    },
+    {
+      "id": "place_down",
+      "description": "Power off and place drill in holder",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

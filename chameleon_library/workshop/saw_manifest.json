@@ -1,0 +1,140 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "workshop.tool.saw",
+  "objectId": "CHA-WRK-SAW-001",
+  "displayName": "Hand Saw",
+  "description": "550mm hand saw. HIGH RISK \u2014 humanoid cross-check and command signing required.",
+  "manufacturer": "Generic",
+  "category": "workshop",
+  "tags": [
+    "tool",
+    "saw",
+    "workshop",
+    "sharp"
+  ],
+  "physicalProperties": {
+    "material": "steel_plastic",
+    "weightKg": 0.7,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 8.0,
+      "widthCm": 55.0,
+      "depthCm": 3.0
+    },
+    "placementSurfaces": [
+      "workbench",
+      "tool_holder"
+    ],
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grip",
+        "location": "pistol_handle",
+        "forceMaxNewtons": 40,
+        "forceRecommendedNewtons": 24.0,
+        "fingerSpreadMm": 50,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 40,
+    "maxTemperatureCelsius": 50,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "swing_at_human",
+      "use_as_weapon",
+      "cut_near_human",
+      "hold_by_blade",
+      "point_at_human"
+    ],
+    "requiredPPE": [
+      "safety_glasses",
+      "cut_resistant_gloves",
+      "ear_protection"
+    ],
+    "safeDistanceMeters": 1.5,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": true
+  },
+  "security": {
+    "did": "did:chameleon:workshop:CHA-WRK-SAW-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": true
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-WRK-SAW-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://workshop/CHA-WRK-SAW-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA2007"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Grasp saw by handle only \u2014 blade away from body",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "position_blade",
+      "description": "Position blade on marked cut line",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "cut_material",
+      "description": "Perform controlled cutting motion",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 60
+    },
+    {
+      "id": "place_down",
+      "description": "Place saw in holder with blade guard",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

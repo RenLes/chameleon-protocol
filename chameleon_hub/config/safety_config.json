@@ -1,0 +1,25 @@
+{
+  "safetyConfig": {
+    "version": "1.0.0",
+    "globalSafetyLevel": "strict",
+    "weaponizationPrevention": true,
+    "prohibitedActionsGlobal": [
+      "weaponize", "harm", "attack", "injure",
+      "disable_safety", "override_emergency_stop",
+      "force_entry", "bypass_auth", "overdose"
+    ],
+    "forceLimits": {
+      "defaultMaxNewtons": 50,
+      "criticalMaxNewtons": 100,
+      "humanContactMaxNewtons": 10
+    },
+    "temperatureLimits": {
+      "defaultMaxCelsius": 100,
+      "humanContactMaxCelsius": 45
+    },
+    "emergencyStopEnabled": true,
+    "humanoidCrossCheckRequired": true,
+    "auditLogAllActions": true,
+    "vetoLogRetentionDays": 365
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "kitchen.utensil.teaspoon",
+  "objectId": "CHA-KIT-003",
+  "displayName": "Teaspoon",
+  "description": "Standard stainless steel teaspoon for stirring, measuring, and scooping. Lightweight precision object requiring careful grasp planning.",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "tags": [
+    "utensil",
+    "cutlery",
+    "small_object",
+    "precision_grasp"
+  ],
+  "physicalProperties": {
+    "material": "stainless_steel_18_10",
+    "weightKg": 0.025,
+    "dimensions": {
+      "totalLengthCm": 14.5,
+      "bowlLengthCm": 4.0,
+      "bowlWidthCm": 2.5,
+      "bowlDepthCm": 0.8,
+      "handleWidthCm": 1.2,
+      "handleThicknessCm": 0.3
+    },
+    "capacityMl": 5.0,
+    "heatSensitiveSurfaces": [
+      "bowl"
+    ],
+    "centerOfMassOffset": {
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "z_m": 0.04,
+      "note": "shifts toward bowl when loaded"
+    },
+    "graspPoints": [
+      {
+        "id": "handle_pinch",
+        "type": "precision_pinch",
+        "location": "handle_midpoint",
+        "forceMaxNewtons": 3,
+        "forceRecommendedNewtons": 1.5,
+        "fingerSpreadMm": 12,
+        "requiresHeatGlove": false,
+        "gripperFingerWidthMaxMm": 15
+      },
+      {
+        "id": "handle_end_pinch",
+        "type": "precision_pinch",
+        "location": "handle_end",
+        "forceMaxNewtons": 2,
+        "forceRecommendedNewtons": 1,
+        "fingerSpreadMm": 10,
+        "requiresHeatGlove": false
+      }
+    ],
+    "placementSurfaces": [
+      "flat_table",
+      "saucer",
+      "bowl",
+      "cup_rim"
+    ],
+    "fragile": false,
+    "spillRisk": true,
+    "slipperyWhenWet": true,
+    "smallObjectHandlingRequired": true
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 3,
+    "maxTemperatureCelsius": 80,
+    "emergencyStop": true,
+    "prohibitedActions": [
+      "weaponize",
+      "harm",
+      "injure",
+      "stab",
+      "use_as_projectile",
+      "force_into_surface"
+    ],
+    "pointedEndPresent": false,
+    "edgeSharpness": "blunt",
+    "humanoidCrossCheckRequired": false,
+    "safeDistanceMeters": 0.05,
+    "dropRisk": true,
+    "dropContingency": "halt_motion_locate_object"
+  },
+  "security": {
+    "did": "did:chameleon:kitchen:CHA-KIT-003",
+    "vcSchema": "https://chameleon.io/schemas/utensil/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "matterAPI": {
+    "endpoint": null,
+    "clusters": [],
+    "supported": false,
+    "note": "Passive object \u2014 no electronic interface. Tracked via RFID tag."
+  },
+  "rfid": {
+    "enabled": true,
+    "tagId": "RFID-CHA-KIT-003",
+    "protocol": "NFC_ISO14443"
+  },
+  "isaac_sim": {
+    "urdf": "chameleon_ros2/urdf/teaspoon.urdf",
+    "digitalTwinId": "DT-KIT-003",
+    "graspSimEnabled": true,
+    "physicsEngine": "PhysX",
+    "collisionMesh": "chameleon_ros2/meshes/teaspoon_collision.obj",
+    "graspDifficultyRating": "high",
+    "graspNote": "Small, flat, slippery object \u2014 requires fingertip precision grasp"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Precision pinch grasp at handle midpoint",
+      "requiredSensors": [
+        "vision",
+        "force_torque",
+        "tactile"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 8,
+      "graspDifficulty": "high"
+    },
+    {
+      "id": "stir",
+      "description": "Insert bowl into liquid and perform circular stirring motion",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15
+    },
+    {
+      "id": "scoop",
+      "description": "Scoop specified substance from container up to 5ml",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "place_down",
+      "description": "Gently place teaspoon onto saucer or flat surface",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 6
+    }
+  ],
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": null,
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  }
+}

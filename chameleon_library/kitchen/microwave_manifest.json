@@ -1,0 +1,149 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "kitchen.appliance.microwave",
+  "objectId": "CHA-KIT-MWV-001",
+  "displayName": "Microwave Oven",
+  "description": "Countertop microwave oven. Chameleon-enabled via Matter API.",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "tags": [
+    "appliance",
+    "microwave",
+    "kitchen"
+  ],
+  "physicalProperties": {
+    "material": "plastic_steel",
+    "weightKg": 11.0,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 28.0,
+      "widthCm": 50.0,
+      "depthCm": 38.0
+    },
+    "placementSurfaces": [
+      "flat_countertop"
+    ],
+    "surfaceTemperatureRanges": {
+      "ambientCelsius": 20,
+      "maxOperatingCelsius": 100,
+      "handleMaxCelsius": 45
+    },
+    "graspPoints": [
+      {
+        "id": "door_handle",
+        "type": "power_grip",
+        "location": "front_door_handle",
+        "forceMaxNewtons": 12,
+        "forceRecommendedNewtons": 7.0,
+        "fingerSpreadMm": 60,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 12,
+    "maxTemperatureCelsius": 100,
+    "humanContactMaxTempCelsius": 45,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": true,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "operate_empty",
+      "insert_metal"
+    ],
+    "requiredPPE": [
+      "heat_resistant_gloves"
+    ],
+    "safeDistanceMeters": 0.3,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:kitchen:CHA-KIT-MWV-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-KIT-MWV-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://kitchen/CHA-KIT-MWV-001",
+    "clusters": [
+      "OnOff",
+      "TemperatureMeasurement"
+    ],
+    "supported": true,
+    "matterId": "0xCHA1002"
+  },
+  "actions": [
+    {
+      "id": "open_door",
+      "description": "Open microwave door",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "insert_food",
+      "description": "Place food inside microwave",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "set_timer",
+      "description": "Configure cook time and power level",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "start_cook",
+      "description": "Start microwave cooking cycle",
+      "requiredSensors": [
+        "temperature"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 1800
+    },
+    {
+      "id": "remove_food",
+      "description": "Remove food when done, temp below 45C",
+      "requiredSensors": [
+        "temperature",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15,
+      "precondition": "body_temp_celsius_lt_45"
+    }
+  ]
+}

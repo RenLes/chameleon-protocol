@@ -1,0 +1,122 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bathroom.fixture.shower_curtain",
+  "objectId": "CHA-BTH-SHC-001",
+  "displayName": "Shower Curtain",
+  "description": "Fabric shower curtain on rod. Mould risk if not dried \u2014 handle with care.",
+  "manufacturer": "Generic",
+  "category": "bathroom",
+  "tags": [
+    "fixture",
+    "shower_curtain",
+    "bathroom"
+  ],
+  "physicalProperties": {
+    "material": "polyester",
+    "weightKg": 0.5,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 180.0,
+      "widthCm": 180.0,
+      "depthCm": 1.0
+    },
+    "placementSurfaces": [
+      "shower_rod"
+    ],
+    "graspPoints": [
+      {
+        "id": "curtain_edge",
+        "type": "pinch_grip",
+        "location": "vertical_edge",
+        "forceMaxNewtons": 5,
+        "forceRecommendedNewtons": 3.0,
+        "fingerSpreadMm": 40,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 5,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "pull_from_rod",
+      "tear"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bathroom:CHA-BTH-SHC-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BTH-SHC-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bathroom/CHA-BTH-SHC-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA4005"
+  },
+  "actions": [
+    {
+      "id": "open_curtain",
+      "description": "Slide curtain open along rod",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "close_curtain",
+      "description": "Slide curtain closed along rod",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "reposition",
+      "description": "Adjust curtain position on rod",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

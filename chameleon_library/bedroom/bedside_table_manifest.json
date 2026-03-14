@@ -1,0 +1,122 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bedroom.furniture.bedside_table",
+  "objectId": "CHA-BED-BST-001",
+  "displayName": "Bedside Table",
+  "description": "Small wooden bedside table with drawer.",
+  "manufacturer": "Generic",
+  "category": "bedroom",
+  "tags": [
+    "furniture",
+    "bedside_table",
+    "bedroom"
+  ],
+  "physicalProperties": {
+    "material": "wood",
+    "weightKg": 8.0,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 55.0,
+      "widthCm": 40.0,
+      "depthCm": 40.0
+    },
+    "placementSurfaces": [
+      "flat_floor"
+    ],
+    "graspPoints": [
+      {
+        "id": "side_grip",
+        "type": "power_grip",
+        "location": "side_panel",
+        "forceMaxNewtons": 20,
+        "forceRecommendedNewtons": 12.0,
+        "fingerSpreadMm": 100,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 20,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "tip_over",
+      "overload"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.2,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bedroom:CHA-BED-BST-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BED-BST-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bedroom/CHA-BED-BST-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA5004"
+  },
+  "actions": [
+    {
+      "id": "reposition",
+      "description": "Move table to new floor position",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "place_object_on_top",
+      "description": "Place object on table surface",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "clear_surface",
+      "description": "Remove all items from table surface",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15
+    }
+  ]
+}

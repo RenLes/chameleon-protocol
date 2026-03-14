@@ -1,0 +1,149 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "kitchen.appliance.toaster",
+  "objectId": "CHA-KIT-STP-64F1A3B6",
+  "displayName": "Smart Toaster Pro",
+  "description": "2-slot smart toaster with adjustable browning and auto-eject. Wi-Fi + Matter enabled.",
+  "manufacturer": "AcmeCorp",
+  "category": "kitchen",
+  "tags": [
+    "appliance",
+    "toaster",
+    "kitchen",
+    "smart"
+  ],
+  "physicalProperties": {
+    "material": "stainless_steel",
+    "weightKg": 1.2,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 18.0,
+      "widthCm": 28.0,
+      "depthCm": 16.0
+    },
+    "placementSurfaces": [
+      "flat_countertop",
+      "flat_table"
+    ],
+    "graspPoints": [
+      {
+        "id": "side_grip_left",
+        "type": "pinch_grip",
+        "location": "left_side",
+        "forceMaxNewtons": 5,
+        "forceRecommendedNewtons": 3.0,
+        "fingerSpreadMm": 60,
+        "requiresHeatGlove": true
+      },
+      {
+        "id": "side_grip_right",
+        "type": "pinch_grip",
+        "location": "right_side",
+        "forceMaxNewtons": 5,
+        "forceRecommendedNewtons": 3.0,
+        "fingerSpreadMm": 60,
+        "requiresHeatGlove": true
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 5,
+    "maxTemperatureCelsius": 300,
+    "humanContactMaxTempCelsius": 45,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": true,
+    "prohibitedActions": [
+      "insert_metal_object",
+      "overfill",
+      "operate_near_water",
+      "harm",
+      "weaponize",
+      "throw",
+      "injure"
+    ],
+    "requiredPPE": [],
+    "safeDistanceMeters": 0.3,
+    "spillContingency": "halt_motion_alert_operator",
+    "humanoidCrossCheckRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:kitchen:CHA-KIT-STP-64F1A3B6",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": false,
+    "certifier": null,
+    "certDate": null,
+    "certTxId": null,
+    "status": "pending",
+    "notes": "Pending certification \u2014 submit to POST /certify to complete"
+  },
+  "matterAPI": {
+    "endpoint": "matter://kitchen/CHA-KIT-STP-64F1A3B6",
+    "clusters": [
+      "OnOff",
+      "TemperatureMeasurement",
+      "LevelControl"
+    ],
+    "supported": true,
+    "matterId": "0xCHA2586"
+  },
+  "actions": [
+    {
+      "id": "insert_bread",
+      "description": "Insert bread",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "temperature"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 120
+    },
+    {
+      "id": "eject_toast",
+      "description": "Eject toast",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "temperature"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 120
+    },
+    {
+      "id": "adjust_browning",
+      "description": "Adjust browning",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "temperature"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 120
+    },
+    {
+      "id": "cancel",
+      "description": "Cancel",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "temperature"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 120
+    }
+  ]
+}

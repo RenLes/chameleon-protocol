@@ -1,0 +1,134 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bathroom.personal_care.toothbrush",
+  "objectId": "CHA-BTH-TBR-001",
+  "displayName": "Toothbrush",
+  "description": "Standard manual toothbrush. Personal care item \u2014 handoff to human for use.",
+  "manufacturer": "Generic",
+  "category": "bathroom",
+  "tags": [
+    "personal_care",
+    "toothbrush",
+    "bathroom"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 0.05,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 20.0,
+      "widthCm": 2.0,
+      "depthCm": 1.5
+    },
+    "placementSurfaces": [
+      "toothbrush_holder",
+      "bathroom_shelf"
+    ],
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "precision_grip",
+        "location": "handle",
+        "forceMaxNewtons": 2,
+        "forceRecommendedNewtons": 1.0,
+        "fingerSpreadMm": 20,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 2,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "share_toothbrush",
+      "use_on_non_owner"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.05,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bathroom:CHA-BTH-TBR-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BTH-TBR-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bathroom/CHA-BTH-TBR-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA4001"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up toothbrush by handle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "apply_toothpaste",
+      "description": "Apply toothpaste to brush head",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "handoff_to_human",
+      "description": "Hold toothbrush for human to take",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "place_in_holder",
+      "description": "Return toothbrush to holder",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bathroom.appliance.hairdryer",
+  "objectId": "CHA-BTH-HDR-001",
+  "displayName": "Hair Dryer",
+  "description": "1800W hair dryer. No contact when operating \u2014 heat and electrical hazard.",
+  "manufacturer": "Generic",
+  "category": "bathroom",
+  "tags": [
+    "appliance",
+    "hairdryer",
+    "bathroom"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 0.6,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 22.0,
+      "widthCm": 8.0,
+      "depthCm": 18.0
+    },
+    "placementSurfaces": [
+      "bathroom_shelf",
+      "hook"
+    ],
+    "surfaceTemperatureRanges": {
+      "ambientCelsius": 20,
+      "maxOperatingCelsius": 120,
+      "handleMaxCelsius": 45
+    },
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grip",
+        "location": "handle",
+        "forceMaxNewtons": 6,
+        "forceRecommendedNewtons": 4.0,
+        "fingerSpreadMm": 40,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 6,
+    "maxTemperatureCelsius": 120,
+    "humanContactMaxTempCelsius": 45,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": true,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "use_near_water",
+      "use_on_human_directly",
+      "drop_in_water"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.5,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bathroom:CHA-BTH-HDR-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BTH-HDR-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bathroom/CHA-BTH-HDR-001",
+    "clusters": [
+      "OnOff",
+      "LevelControl"
+    ],
+    "supported": true,
+    "matterId": "0xCHA4002"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up hair dryer by handle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "switch_on",
+      "description": "Turn hair dryer on",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 2
+    },
+    {
+      "id": "switch_off",
+      "description": "Turn hair dryer off",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 2
+    },
+    {
+      "id": "place_down",
+      "description": "Place hair dryer on shelf \u2014 ensure cool before storage",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "temperature"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5,
+      "precondition": "body_temp_celsius_lt_45"
+    }
+  ]
+}

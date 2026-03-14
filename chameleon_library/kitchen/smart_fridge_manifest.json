@@ -1,0 +1,226 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "kitchen.appliance.refrigerator",
+  "objectId": "CHA-KIT-002",
+  "displayName": "Smart Refrigerator",
+  "description": "Connected smart refrigerator with inventory tracking, temperature zones, and door control. Chameleon-enabled via Matter API.",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "tags": [
+    "appliance",
+    "cold_storage",
+    "inventory",
+    "smart_home"
+  ],
+  "physicalProperties": {
+    "material": "steel_with_plastic_interior",
+    "totalCapacityLitres": 450,
+    "weightKg": 85.0,
+    "dimensions": {
+      "heightCm": 180.0,
+      "widthCm": 80.0,
+      "depthCm": 75.0
+    },
+    "zones": [
+      {
+        "id": "fridge_main",
+        "targetTempCelsius": 4,
+        "rangeCelsius": [
+          2,
+          8
+        ],
+        "capacityLitres": 320
+      },
+      {
+        "id": "freezer",
+        "targetTempCelsius": -18,
+        "rangeCelsius": [
+          -22,
+          -15
+        ],
+        "capacityLitres": 130
+      }
+    ],
+    "doors": [
+      {
+        "id": "fridge_door",
+        "type": "swing",
+        "hingeSide": "right",
+        "openingAngleDegrees": 120,
+        "handleForceMaxNewtons": 20,
+        "handleForceRecommendedNewtons": 10
+      },
+      {
+        "id": "freezer_door",
+        "type": "swing",
+        "hingeSide": "right",
+        "openingAngleDegrees": 120,
+        "handleForceMaxNewtons": 20,
+        "handleForceRecommendedNewtons": 10
+      }
+    ],
+    "graspPoints": [
+      {
+        "id": "fridge_handle",
+        "type": "bar_grip",
+        "location": "front_fridge_door",
+        "forceMaxNewtons": 20,
+        "forceRecommendedNewtons": 10,
+        "fingerSpreadMm": 60,
+        "requiresHeatGlove": false
+      },
+      {
+        "id": "freezer_handle",
+        "type": "bar_grip",
+        "location": "front_freezer_door",
+        "forceMaxNewtons": 20,
+        "forceRecommendedNewtons": 10,
+        "fingerSpreadMm": 60,
+        "requiresHeatGlove": false
+      }
+    ],
+    "heatSensitiveSurfaces": [],
+    "coldSurfaces": [
+      "interior_fridge",
+      "interior_freezer"
+    ],
+    "centerOfMassOffset": {
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "z_m": 0.9
+    },
+    "fragile": false,
+    "spillRisk": false,
+    "motorized": true,
+    "compressorLocation": "rear_bottom"
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 20,
+    "maxTemperatureCelsius": 8,
+    "minTemperatureCelsius": -22,
+    "emergencyStop": true,
+    "prohibitedActions": [
+      "weaponize",
+      "harm",
+      "injure",
+      "disable_compressor",
+      "override_temp_controls",
+      "block_ventilation",
+      "store_hazardous_materials",
+      "force_door_closed_on_obstruction"
+    ],
+    "doorObstructionDetection": true,
+    "childLockSupported": true,
+    "humanoidCrossCheckRequired": false,
+    "safeDistanceMeters": 0.5,
+    "powerCutContingency": "alert_operator_log_to_ledger"
+  },
+  "security": {
+    "did": "did:chameleon:kitchen:CHA-KIT-002",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false,
+    "inventoryLedgerEnabled": true
+  },
+  "matterAPI": {
+    "endpoint": "matter://kitchen/fridge/CHA-KIT-002",
+    "clusters": [
+      "RefrigeratorAlarm",
+      "TemperatureControl",
+      "TemperatureMeasurement",
+      "DoorLock",
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA0002"
+  },
+  "isaac_sim": {
+    "urdf": "chameleon_ros2/urdf/smart_fridge.urdf",
+    "digitalTwinId": "DT-KIT-002",
+    "graspSimEnabled": true,
+    "physicsEngine": "PhysX",
+    "collisionMesh": "chameleon_ros2/meshes/fridge_collision.obj",
+    "articulatedDoors": true
+  },
+  "actions": [
+    {
+      "id": "open_fridge_door",
+      "description": "Pull fridge door open to specified angle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "close_fridge_door",
+      "description": "Push fridge door closed \u2014 check for obstructions first",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "proximity"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "precondition": "no_obstruction_in_door_path",
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "retrieve_item",
+      "description": "Locate and retrieve specified item from fridge using vision",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 30
+    },
+    {
+      "id": "place_item",
+      "description": "Place item into fridge at designated shelf location",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "set_temperature",
+      "description": "Adjust zone temperature within safe operational range",
+      "requiredSensors": [
+        "temperature"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "scan_inventory",
+      "description": "Photograph interior and update inventory ledger via vision AI",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15
+    }
+  ],
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": null,
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  }
+}

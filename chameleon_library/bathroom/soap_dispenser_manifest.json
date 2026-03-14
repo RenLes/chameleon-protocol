@@ -1,0 +1,136 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bathroom.accessory.soap_dispenser",
+  "objectId": "CHA-BTH-SDP-001",
+  "displayName": "Soap Dispenser",
+  "description": "Pump-action liquid soap dispenser. Spill risk when refilling.",
+  "manufacturer": "Generic",
+  "category": "bathroom",
+  "tags": [
+    "accessory",
+    "soap",
+    "bathroom"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 0.3,
+    "fragile": false,
+    "spillRisk": true,
+    "dimensions": {
+      "heightCm": 18.0,
+      "widthCm": 7.0,
+      "depthCm": 7.0
+    },
+    "placementSurfaces": [
+      "bathroom_shelf",
+      "sink_surround"
+    ],
+    "graspPoints": [
+      {
+        "id": "body_grip",
+        "type": "power_grip",
+        "location": "dispenser_body",
+        "forceMaxNewtons": 4,
+        "forceRecommendedNewtons": 2.5,
+        "fingerSpreadMm": 40,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 4,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "overfill",
+      "squeeze_forcefully"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bathroom:CHA-BTH-SDP-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BTH-SDP-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bathroom/CHA-BTH-SDP-001",
+    "clusters": [
+      "OnOff",
+      "LevelControl"
+    ],
+    "supported": true,
+    "matterId": "0xCHA4004"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up soap dispenser",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "dispense_soap",
+      "description": "Press pump to dispense soap",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "refill",
+      "description": "Open lid and refill reservoir",
+      "requiredSensors": [
+        "force_torque",
+        "vision",
+        "level_sensor"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "place_down",
+      "description": "Return dispenser to surface",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    }
+  ]
+}

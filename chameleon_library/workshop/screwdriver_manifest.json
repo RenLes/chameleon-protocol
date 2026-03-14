@@ -1,0 +1,125 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "workshop.tool.screwdriver",
+  "objectId": "CHA-WRK-SDV-001",
+  "displayName": "Screwdriver",
+  "description": "Phillips-head screwdriver. Cross-check required for safe use.",
+  "manufacturer": "Generic",
+  "category": "workshop",
+  "tags": [
+    "tool",
+    "screwdriver",
+    "workshop"
+  ],
+  "physicalProperties": {
+    "material": "steel_plastic",
+    "weightKg": 0.3,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 25.0,
+      "widthCm": 3.0,
+      "depthCm": 3.0
+    },
+    "placementSurfaces": [
+      "tool_holder",
+      "flat_surface"
+    ],
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grip",
+        "location": "handle",
+        "forceMaxNewtons": 20,
+        "forceRecommendedNewtons": 12.0,
+        "fingerSpreadMm": 35,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 20,
+    "maxTemperatureCelsius": 50,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "swing_at_human",
+      "use_as_weapon",
+      "point_at_human"
+    ],
+    "requiredPPE": [
+      "safety_glasses",
+      "gloves"
+    ],
+    "safeDistanceMeters": 0.5,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:workshop:CHA-WRK-SDV-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-WRK-SDV-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://workshop/CHA-WRK-SDV-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA2001"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up screwdriver by handle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "drive_screw",
+      "description": "Insert and drive screw into target",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 30
+    },
+    {
+      "id": "place_down",
+      "description": "Place screwdriver in holder",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

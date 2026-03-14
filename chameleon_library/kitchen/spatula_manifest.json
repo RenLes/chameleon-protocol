@@ -1,0 +1,121 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "kitchen.utensil.spatula",
+  "objectId": "CHA-KIT-SPT-001",
+  "displayName": "Spatula",
+  "description": "Silicone-head spatula for cooking and baking.",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "tags": [
+    "utensil",
+    "spatula",
+    "kitchen"
+  ],
+  "physicalProperties": {
+    "material": "silicone_plastic",
+    "weightKg": 0.15,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 32.0,
+      "widthCm": 8.0,
+      "depthCm": 2.0
+    },
+    "placementSurfaces": [
+      "flat_surface",
+      "utensil_holder"
+    ],
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "precision_grip",
+        "location": "handle",
+        "forceMaxNewtons": 4,
+        "forceRecommendedNewtons": 2.5,
+        "fingerSpreadMm": 25,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 4,
+    "maxTemperatureCelsius": 80,
+    "humanContactMaxTempCelsius": 45,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:kitchen:CHA-KIT-SPT-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-KIT-SPT-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://kitchen/CHA-KIT-SPT-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA1007"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Grasp spatula by handle",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "flip_food",
+      "description": "Use spatula to flip food item in pan",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "place_down",
+      "description": "Place spatula on rest or holder",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

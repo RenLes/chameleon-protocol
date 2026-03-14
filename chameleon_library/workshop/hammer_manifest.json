@@ -1,0 +1,204 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "workshop.tool.hammer",
+  "objectId": "CHA-WRK-001",
+  "displayName": "Claw Hammer",
+  "description": "Standard 16oz steel claw hammer for driving and removing nails. HIGH SAFETY PRIORITY \u2014 blunt-force capable tool. Humanoid cross-check required for all strike actions.",
+  "manufacturer": "Generic",
+  "category": "workshop",
+  "tags": [
+    "tool",
+    "hand_tool",
+    "impact",
+    "high_force",
+    "safety_critical"
+  ],
+  "physicalProperties": {
+    "material": {
+      "head": "drop_forged_steel",
+      "handle": "fibreglass_with_rubber_grip"
+    },
+    "weightKg": 0.68,
+    "dimensions": {
+      "totalLengthCm": 33.0,
+      "headLengthCm": 14.5,
+      "headWidthCm": 4.5,
+      "headHeightCm": 4.0,
+      "handleDiameterCm": 3.2,
+      "faceCircumferenceCm": 3.8
+    },
+    "strikeForceMaxNewtons": 800,
+    "strikeVelocityMaxMs": 6.0,
+    "heatSensitiveSurfaces": [],
+    "centerOfMassOffset": {
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "z_m": 0.27,
+      "note": "heavily head-weighted \u2014 critical for swing dynamics"
+    },
+    "graspPoints": [
+      {
+        "id": "handle_primary",
+        "type": "power_grip",
+        "location": "handle_lower_third",
+        "forceMaxNewtons": 80,
+        "forceRecommendedNewtons": 40,
+        "fingerSpreadMm": 32,
+        "requiresHeatGlove": false,
+        "requiresWorkGlove": true
+      },
+      {
+        "id": "handle_choked",
+        "type": "power_grip",
+        "location": "handle_upper_third",
+        "forceMaxNewtons": 60,
+        "forceRecommendedNewtons": 30,
+        "fingerSpreadMm": 32,
+        "note": "choked grip for precision tasks"
+      }
+    ],
+    "dangerousComponents": [
+      "steel_head_face",
+      "claw_end"
+    ],
+    "clawEndSharp": true,
+    "impactCapable": true,
+    "fragile": false,
+    "spillRisk": false,
+    "placementSurfaces": [
+      "workbench",
+      "tool_rack",
+      "floor"
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 80,
+    "strikeForceMaxNewtons": 800,
+    "emergencyStop": true,
+    "humanZoneCheckRequired": true,
+    "prohibitedActions": [
+      "weaponize",
+      "harm",
+      "injure",
+      "attack",
+      "strike_near_human",
+      "throw",
+      "use_as_projectile",
+      "strike_without_target_verification",
+      "swing_in_uncontrolled_arc"
+    ],
+    "requiredPPE": [
+      "safety_glasses",
+      "work_gloves"
+    ],
+    "safeStrikeZoneClearanceMeters": 1.5,
+    "humanoidCrossCheckRequired": true,
+    "humanoidCrossCheckNote": "All strike actions require zone-clear confirmation before execution",
+    "safeDistanceMeters": 1.5,
+    "impactContingency": "immediate_halt_if_unexpected_resistance",
+    "storageRequirement": "tool_rack_or_toolbox_only"
+  },
+  "security": {
+    "did": "did:chameleon:workshop:CHA-WRK-001",
+    "vcSchema": "https://chameleon.io/schemas/tool/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "authorized_humanoid_with_workshop_vc",
+    "auditLogRequired": true,
+    "commandSigningRequired": true,
+    "useLogRequired": true
+  },
+  "matterAPI": {
+    "endpoint": null,
+    "clusters": [],
+    "supported": false,
+    "note": "Passive tool \u2014 tracked via RFID tag on handle."
+  },
+  "rfid": {
+    "enabled": true,
+    "tagId": "RFID-CHA-WRK-001",
+    "protocol": "NFC_ISO14443",
+    "locationTracking": true
+  },
+  "isaac_sim": {
+    "urdf": "chameleon_ros2/urdf/hammer.urdf",
+    "digitalTwinId": "DT-WRK-001",
+    "graspSimEnabled": true,
+    "physicsEngine": "PhysX",
+    "collisionMesh": "chameleon_ros2/meshes/hammer_collision.obj",
+    "swingDynamicsEnabled": true,
+    "graspDifficultyRating": "medium",
+    "safetySimRequired": true,
+    "safetySimNote": "Must simulate full swing arc collision check before physical execution"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Power grip the handle at lower third \u2014 lift vertically",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "drive_nail",
+      "description": "Strike nail head with controlled swing \u2014 zone-clear check mandatory",
+      "requiredSensors": [
+        "vision",
+        "force_torque",
+        "proximity"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "precondition": "strike_zone_clear_of_humans_and_obstacles",
+      "maxDurationSeconds": 30,
+      "maxStrikes": 10
+    },
+    {
+      "id": "pull_nail",
+      "description": "Hook claw under nail head and lever out using handle as fulcrum",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 20
+    },
+    {
+      "id": "place_down",
+      "description": "Set hammer down on workbench \u2014 head down, handle parallel to surface",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "return_to_storage",
+      "description": "Place hammer on designated tool rack slot",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15
+    }
+  ],
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": null,
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "living_room.object.book",
+  "objectId": "CHA-LVR-001",
+  "displayName": "Hardcover Book",
+  "description": "Standard hardcover book. Lightweight passive object requiring careful flat-surface handling to avoid spine damage. Exemplar for passive object class in Chameleon library.",
+  "manufacturer": "Generic",
+  "category": "living_room",
+  "tags": [
+    "passive_object",
+    "fragile_spine",
+    "flat",
+    "small",
+    "precision_handling"
+  ],
+  "physicalProperties": {
+    "material": {
+      "cover": "hardcover_cloth_or_laminate",
+      "pages": "paper",
+      "binding": "sewn_or_glued_spine"
+    },
+    "weightKg": 0.55,
+    "dimensions": {
+      "heightCm": 24.0,
+      "widthCm": 16.5,
+      "thicknessCm": 3.0,
+      "spineWidthCm": 3.0
+    },
+    "pageCount": 320,
+    "heatSensitiveSurfaces": [
+      "pages",
+      "cover"
+    ],
+    "waterSensitiveSurfaces": [
+      "pages",
+      "cover",
+      "spine"
+    ],
+    "centerOfMassOffset": {
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "z_m": 0.015
+    },
+    "graspPoints": [
+      {
+        "id": "spine_grip",
+        "type": "flat_palm_support",
+        "location": "spine_and_back_cover",
+        "forceMaxNewtons": 5,
+        "forceRecommendedNewtons": 2,
+        "fingerSpreadMm": 30,
+        "requiresHeatGlove": false,
+        "note": "Preferred grasp \u2014 support from below spine and back cover"
+      },
+      {
+        "id": "top_pinch",
+        "type": "two_finger_pinch",
+        "location": "top_edge",
+        "forceMaxNewtons": 3,
+        "forceRecommendedNewtons": 1.5,
+        "fingerSpreadMm": 15,
+        "note": "Only for brief repositioning \u2014 do not carry by top pinch"
+      }
+    ],
+    "placementSurfaces": [
+      "bookshelf",
+      "flat_table",
+      "bedside_table"
+    ],
+    "fragile": true,
+    "fragileComponents": [
+      "spine",
+      "cover_corners"
+    ],
+    "spillRisk": false,
+    "stackable": true,
+    "maxStackHeight": 5
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 5,
+    "emergencyStop": true,
+    "prohibitedActions": [
+      "weaponize",
+      "harm",
+      "injure",
+      "throw",
+      "use_as_impact_object",
+      "force_into_shelf",
+      "wet_pages",
+      "expose_to_direct_heat"
+    ],
+    "humanoidCrossCheckRequired": false,
+    "safeDistanceMeters": 0.1,
+    "spineProtection": true,
+    "spineNote": "Do not bend cover past 120 degrees \u2014 spine damage risk",
+    "dropContingency": "halt_motion_locate_object",
+    "storageRequirement": "upright_on_shelf_or_flat_stack"
+  },
+  "security": {
+    "did": "did:chameleon:living_room:CHA-LVR-001",
+    "vcSchema": "https://chameleon.io/schemas/passive_object/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false,
+    "ownershipTrackingEnabled": true
+  },
+  "matterAPI": {
+    "endpoint": null,
+    "clusters": [],
+    "supported": false,
+    "note": "Passive object \u2014 tracked via RFID tag on inside back cover."
+  },
+  "rfid": {
+    "enabled": true,
+    "tagId": "RFID-CHA-LVR-001",
+    "protocol": "NFC_ISO14443",
+    "locationTracking": true,
+    "libraryIntegration": true
+  },
+  "isbn": {
+    "tracked": false,
+    "note": "ISBN may be scanned via vision for inventory \u2014 not hardcoded in manifest"
+  },
+  "isaac_sim": {
+    "urdf": "chameleon_ros2/urdf/book_hardcover.urdf",
+    "digitalTwinId": "DT-LVR-001",
+    "graspSimEnabled": true,
+    "physicsEngine": "PhysX",
+    "collisionMesh": "chameleon_ros2/meshes/book_collision.obj",
+    "graspDifficultyRating": "low",
+    "deformableSimEnabled": false
+  },
+  "actions": [
+    {
+      "id": "pick_up_from_flat",
+      "description": "Slide fingers under book on flat surface, support from below \u2014 lift horizontally",
+      "requiredSensors": [
+        "vision",
+        "force_torque",
+        "tactile"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 8
+    },
+    {
+      "id": "pick_up_from_shelf",
+      "description": "Tilt book top toward humanoid, grasp spine, slide out from shelf",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 10
+    },
+    {
+      "id": "place_on_shelf",
+      "description": "Slide book upright into shelf gap \u2014 spine facing out",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 12
+    },
+    {
+      "id": "place_on_table",
+      "description": "Lay book flat on table \u2014 cover facing up",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 6
+    },
+    {
+      "id": "hand_to_human",
+      "description": "Extend book toward human \u2014 wait for grip confirmation before releasing",
+      "requiredSensors": [
+        "vision",
+        "force_torque",
+        "tactile"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "handoffProtocol": "wait_for_human_grip_before_release",
+      "maxDurationSeconds": 15
+    },
+    {
+      "id": "scan_title",
+      "description": "Orient cover toward camera and log title/ISBN to inventory ledger",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ],
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": null,
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  }
+}

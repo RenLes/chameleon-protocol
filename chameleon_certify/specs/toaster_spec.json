@@ -1,0 +1,50 @@
+{
+  "_comment": "Example manufacturer spec — minimal input required by Chameleon Certify CLI",
+  "displayName": "Smart Toaster Pro",
+  "manufacturer": "AcmeCorp",
+  "category": "kitchen",
+  "objectClass": "kitchen.appliance.toaster",
+  "description": "2-slot smart toaster with adjustable browning and auto-eject. Wi-Fi + Matter enabled.",
+  "tags": ["appliance", "toaster", "kitchen", "smart"],
+  "weightKg": 1.2,
+  "material": "stainless_steel",
+  "fragile": false,
+  "spillRisk": false,
+  "requiresHeatGlove": true,
+  "maxForceNewtons": 5,
+  "maxTemperatureCelsius": 300,
+  "humanContactMaxTempCelsius": 45,
+  "safetyLevel": "strict",
+  "additionalProhibitedActions": ["insert_metal_object", "operate_near_water"],
+  "matterSupported": true,
+  "matterClusters": ["OnOff", "TemperatureMeasurement", "LevelControl"],
+  "actions": ["insert_bread", "eject_toast", "adjust_browning", "cancel"],
+  "requiredSensors": ["force_torque", "vision", "temperature"],
+  "defaultActionDurationSeconds": 120,
+  "dimensions": {
+    "heightCm": 18.0,
+    "widthCm": 28.0,
+    "depthCm": 16.0
+  },
+  "placementSurfaces": ["flat_countertop", "flat_table"],
+  "graspPoints": [
+    {
+      "id": "side_grip_left",
+      "type": "pinch_grip",
+      "location": "left_side",
+      "forceMaxNewtons": 5,
+      "forceRecommendedNewtons": 3.0,
+      "fingerSpreadMm": 60,
+      "requiresHeatGlove": true
+    },
+    {
+      "id": "side_grip_right",
+      "type": "pinch_grip",
+      "location": "right_side",
+      "forceMaxNewtons": 5,
+      "forceRecommendedNewtons": 3.0,
+      "fingerSpreadMm": 60,
+      "requiresHeatGlove": true
+    }
+  ]
+}

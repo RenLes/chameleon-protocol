@@ -1,0 +1,10 @@
+chameleon_node:
+  ros__parameters:
+    hub_url: "http://localhost:8080"
+    safety_level: "strict"         # strict | moderate | permissive
+    humanoid_did: "did:chameleon:humanoid:unit-001"
+    force_limit_newtons: 50.0
+    temperature_limit_celsius: 80.0
+    ledger_mode: "iota_private"
+    isaac_sim_enabled: true
+    digital_twin_sync_hz: 10

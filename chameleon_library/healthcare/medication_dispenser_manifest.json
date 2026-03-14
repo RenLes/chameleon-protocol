@@ -1,0 +1,123 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "healthcare.device.medication_dispenser",
+  "objectId": "CHA-HLT-001",
+  "displayName": "Automated Medication Dispenser",
+  "description": "Automated medication dispenser for scheduled dose management.",
+  "manufacturer": "Generic",
+  "category": "healthcare",
+  "tags": [
+    "healthcare"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 2.5,
+    "fragile": false,
+    "spillRisk": false,
+    "graspPoints": [
+      {
+        "id": "primary",
+        "type": "power_grip",
+        "location": "body",
+        "forceMaxNewtons": 8,
+        "forceRecommendedNewtons": 4.8,
+        "fingerSpreadMm": 50,
+        "requiresHeatGlove": false
+      }
+    ],
+    "placementSurfaces": [
+      "flat_surface"
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 8,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "tamper",
+      "weaponize",
+      "harm",
+      "bypass_schedule"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.3,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": true
+  },
+  "security": {
+    "did": "did:chameleon:healthcare:CHA-HLT-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": true
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-HLT-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0."
+  },
+  "matterAPI": {
+    "endpoint": "matter://healthcare/CHA-HLT-001",
+    "clusters": [
+      "OnOff",
+      "LevelControl"
+    ],
+    "supported": true,
+    "matterId": "0xCHAH001"
+  },
+  "actions": [
+    {
+      "id": "dispense_dose",
+      "description": "Dispense scheduled dose to patient",
+      "requiredSensors": [
+        "vision",
+        "force_torque"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 15
+    },
+    {
+      "id": "refill_compartment",
+      "description": "Refill medication compartment",
+      "requiredSensors": [
+        "vision",
+        "level_sensor"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 60
+    },
+    {
+      "id": "check_schedule",
+      "description": "Read current medication schedule",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "alert_missed_dose",
+      "description": "Trigger alert for missed dose",
+      "requiredSensors": [
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 5
+    }
+  ]
+}

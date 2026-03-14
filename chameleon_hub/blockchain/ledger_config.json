@@ -1,0 +1,25 @@
+{
+  "ledgerConfig": {
+    "version": "1.0.0",
+    "ledgerType": "iota_private",
+    "networkName": "chameleon_private_net",
+    "nodeEndpoint": "http://localhost:14265",
+    "did": {
+      "method": "chameleon",
+      "rootDID": "did:chameleon:hub:root-001",
+      "vcSchema": "https://chameleon.io/schemas/v1"
+    },
+    "retentionPolicy": {
+      "commandLogDays": 90,
+      "safetyVetoDays": 365,
+      "deviceRegistrationPermanent": true
+    },
+    "immutableEventTypes": [
+      "DEVICE_REGISTERED",
+      "SAFETY_VETO",
+      "EMERGENCY_STOP",
+      "ACCESS_GRANTED",
+      "ACCESS_DENIED"
+    ]
+  }
+}

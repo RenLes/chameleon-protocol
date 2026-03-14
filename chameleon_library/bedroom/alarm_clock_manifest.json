@@ -1,0 +1,132 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "bedroom.device.alarm_clock",
+  "objectId": "CHA-BED-ACK-001",
+  "displayName": "Alarm Clock",
+  "description": "Digital bedside alarm clock.",
+  "manufacturer": "Generic",
+  "category": "bedroom",
+  "tags": [
+    "device",
+    "alarm_clock",
+    "bedroom"
+  ],
+  "physicalProperties": {
+    "material": "plastic",
+    "weightKg": 0.3,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 10.0,
+      "widthCm": 15.0,
+      "depthCm": 8.0
+    },
+    "placementSurfaces": [
+      "bedside_table",
+      "shelf"
+    ],
+    "graspPoints": [
+      {
+        "id": "body_grip",
+        "type": "power_grip",
+        "location": "clock_body",
+        "forceMaxNewtons": 3,
+        "forceRecommendedNewtons": 2.0,
+        "fingerSpreadMm": 50,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "standard",
+    "maxForceNewtons": 3,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 40,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure"
+    ],
+    "requiredPPE": [
+      ""
+    ],
+    "safeDistanceMeters": 0.1,
+    "humanoidCrossCheckRequired": false,
+    "commandSigningRequired": false
+  },
+  "security": {
+    "did": "did:chameleon:bedroom:CHA-BED-ACK-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": false
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-BED-ACK-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://bedroom/CHA-BED-ACK-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA5001"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Pick up alarm clock",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "set_alarm",
+      "description": "Set alarm time via buttons",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 15
+    },
+    {
+      "id": "place_down",
+      "description": "Place clock on surface",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 3
+    },
+    {
+      "id": "snooze",
+      "description": "Press snooze button",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": false,
+      "humanoidCrossCheck": false,
+      "maxDurationSeconds": 2
+    }
+  ]
+}

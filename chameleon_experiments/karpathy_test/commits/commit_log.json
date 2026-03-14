@@ -1,0 +1,755 @@
+[
+  {
+    "commit_id": "CHA-0009",
+    "iteration": 9,
+    "timestamp": "2026-03-13T18:32:17.866788",
+    "description": "Tweak graspForceNewtons: 8.0 \u2192 7.5 (-0.5)",
+    "score_before": -0.2199,
+    "score_after": -0.223,
+    "delta": -0.0031,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 45.0,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 7.5,
+      "liftHeightCm": 25.0,
+      "fillStopFraction": 0.85
+    }
+  },
+  {
+    "commit_id": "CHA-0010",
+    "iteration": 10,
+    "timestamp": "2026-03-13T18:32:18.469492",
+    "description": "Tweak liftHeightCm: 25.0 \u2192 27.0 (+2)",
+    "score_before": -0.223,
+    "score_after": -0.2464,
+    "delta": -0.0234,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 45.0,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 7.5,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.85
+    }
+  },
+  {
+    "commit_id": "CHA-0021",
+    "iteration": 21,
+    "timestamp": "2026-03-13T18:32:26.306918",
+    "description": "Tweak pourTiltAngleDeg: 45.0 \u2192 47.5 (+2.5)",
+    "score_before": -0.2464,
+    "score_after": -0.3442,
+    "delta": -0.0978,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 47.5,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 7.5,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.85
+    }
+  },
+  {
+    "commit_id": "CHA-0022",
+    "iteration": 22,
+    "timestamp": "2026-03-13T18:32:26.912733",
+    "description": "Tweak graspForceNewtons: 7.5 \u2192 8.0 (+0.5)",
+    "score_before": -0.3442,
+    "score_after": -0.3471,
+    "delta": -0.0029,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 47.5,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.85
+    }
+  },
+  {
+    "commit_id": "CHA-0023",
+    "iteration": 23,
+    "timestamp": "2026-03-13T18:32:27.516856",
+    "description": "Tweak fillStopFraction: 0.85 \u2192 0.82 (-0.03)",
+    "score_before": -0.3471,
+    "score_after": -0.3762,
+    "delta": -0.0291,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 47.5,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.82
+    }
+  },
+  {
+    "commit_id": "CHA-0026",
+    "iteration": 26,
+    "timestamp": "2026-03-13T18:32:29.328528",
+    "description": "Tweak pourTiltAngleDeg: 47.5 \u2192 50.0 (+2.5)",
+    "score_before": -0.3762,
+    "score_after": -0.4447,
+    "delta": -0.0685,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.82
+    }
+  },
+  {
+    "commit_id": "CHA-0027",
+    "iteration": 27,
+    "timestamp": "2026-03-13T18:32:29.936067",
+    "description": "Tweak fillStopFraction: 0.82 \u2192 0.79 (-0.03)",
+    "score_before": -0.4447,
+    "score_after": -0.4856,
+    "delta": -0.0409,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.79
+    }
+  },
+  {
+    "commit_id": "CHA-0029",
+    "iteration": 29,
+    "timestamp": "2026-03-13T18:32:31.146665",
+    "description": "Tweak fillStopFraction: 0.79 \u2192 0.82 (+0.03)",
+    "score_before": -0.4856,
+    "score_after": -0.4972,
+    "delta": -0.0116,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 8.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.82
+    }
+  },
+  {
+    "commit_id": "CHA-0030",
+    "iteration": 30,
+    "timestamp": "2026-03-13T18:32:31.750519",
+    "description": "Tweak pourDurationSeconds: 8.0 \u2192 8.5 (+0.5)",
+    "score_before": -0.4972,
+    "score_after": -0.5043,
+    "delta": -0.0071,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 8.5,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.82
+    }
+  },
+  {
+    "commit_id": "CHA-0034",
+    "iteration": 34,
+    "timestamp": "2026-03-13T18:32:34.803989",
+    "description": "Tweak pourDurationSeconds: 8.5 \u2192 9.0 (+0.5)",
+    "score_before": -0.5043,
+    "score_after": -0.5128,
+    "delta": -0.0085,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 9.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.82
+    }
+  },
+  {
+    "commit_id": "CHA-0045",
+    "iteration": 45,
+    "timestamp": "2026-03-13T18:32:42.156974",
+    "description": "Tweak fillStopFraction: 0.82 \u2192 0.79 (-0.03)",
+    "score_before": -0.5128,
+    "score_after": -0.5158,
+    "delta": -0.003,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 9.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.79
+    }
+  },
+  {
+    "commit_id": "CHA-0046",
+    "iteration": 46,
+    "timestamp": "2026-03-13T18:32:42.764684",
+    "description": "Tweak fillStopFraction: 0.79 \u2192 0.82 (+0.03)",
+    "score_before": -0.5158,
+    "score_after": -0.5326,
+    "delta": -0.0168,
+    "params": {
+      "capacityLitres": 1.7,
+      "emptyWeightKg": 0.85,
+      "fullWeightKg": 2.55,
+      "pourTiltAngleDeg": 50.0,
+      "pourDurationSeconds": 9.0,
+      "graspForceNewtons": 8.0,
+      "liftHeightCm": 27.0,
+      "fillStopFraction": 0.82
+    }
+  },
+  {
+    "commit_id": "CHA-0006",
+    "iteration": 6,
+    "timestamp": "2026-03-13T22:20:18.719826",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "lift_height_cm",
+    "old_val": 25.0,
+    "new_val": 26.4985,
+    "description": "Tweak lift_height_cm: 25.0cm \u2192 26.4985cm (+6.0%)",
+    "score_before": -0.0232,
+    "score_after": -0.0317,
+    "delta": -0.0085,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 45.0,
+      "fill_stop_fraction": 0.85,
+      "pour_duration_s": 20.0,
+      "lift_height_cm": 26.4985
+    }
+  },
+  {
+    "commit_id": "CHA-0007",
+    "iteration": 7,
+    "timestamp": "2026-03-13T22:20:19.324725",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "tilt_angle_deg",
+    "old_val": 45.0,
+    "new_val": 48.2607,
+    "description": "Tweak tilt_angle_deg: 45.0\u00b0 \u2192 48.2607\u00b0 (+7.2%)",
+    "score_before": -0.0317,
+    "score_after": -0.1502,
+    "delta": -0.1185,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 48.2607,
+      "fill_stop_fraction": 0.85,
+      "pour_duration_s": 20.0,
+      "lift_height_cm": 26.4985
+    }
+  },
+  {
+    "commit_id": "CHA-0009",
+    "iteration": 9,
+    "timestamp": "2026-03-13T22:20:20.579342",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "pour_duration_s",
+    "old_val": 20.0,
+    "new_val": 18.6597,
+    "description": "Tweak pour_duration_s: 20.0s \u2192 18.6597s (-6.7%)",
+    "score_before": -0.1502,
+    "score_after": -0.1746,
+    "delta": -0.0244,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 48.2607,
+      "fill_stop_fraction": 0.85,
+      "pour_duration_s": 18.6597,
+      "lift_height_cm": 26.4985
+    }
+  },
+  {
+    "commit_id": "CHA-0010",
+    "iteration": 10,
+    "timestamp": "2026-03-13T22:20:21.296619",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "tilt_angle_deg",
+    "old_val": 48.2607,
+    "new_val": 52.9835,
+    "description": "Tweak tilt_angle_deg: 48.2607\u00b0 \u2192 52.9835\u00b0 (+9.8%)",
+    "score_before": -0.1746,
+    "score_after": -0.3177,
+    "delta": -0.1431,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 52.9835,
+      "fill_stop_fraction": 0.85,
+      "pour_duration_s": 18.6597,
+      "lift_height_cm": 26.4985
+    }
+  },
+  {
+    "commit_id": "CHA-0021",
+    "iteration": 21,
+    "timestamp": "2026-03-13T22:20:29.602418",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "fill_stop_fraction",
+    "old_val": 0.85,
+    "new_val": 0.7777,
+    "description": "Tweak fill_stop_fraction: 0.85 \u2192 0.7777 (-8.5%)",
+    "score_before": -0.3177,
+    "score_after": -0.3535,
+    "delta": -0.0358,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 52.9835,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 18.6597,
+      "lift_height_cm": 26.4985
+    }
+  },
+  {
+    "commit_id": "CHA-0022",
+    "iteration": 22,
+    "timestamp": "2026-03-13T22:20:30.171596",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "lift_height_cm",
+    "old_val": 26.4985,
+    "new_val": 24.3323,
+    "description": "Tweak lift_height_cm: 26.4985cm \u2192 24.3323cm (-8.2%)",
+    "score_before": -0.3535,
+    "score_after": -0.3557,
+    "delta": -0.0022,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 52.9835,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 18.6597,
+      "lift_height_cm": 24.3323
+    }
+  },
+  {
+    "commit_id": "CHA-0023",
+    "iteration": 23,
+    "timestamp": "2026-03-13T22:20:30.818899",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "tilt_angle_deg",
+    "old_val": 52.9835,
+    "new_val": 56.8573,
+    "description": "Tweak tilt_angle_deg: 52.9835\u00b0 \u2192 56.8573\u00b0 (+7.3%)",
+    "score_before": -0.3557,
+    "score_after": -0.3958,
+    "delta": -0.0401,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 18.6597,
+      "lift_height_cm": 24.3323
+    }
+  },
+  {
+    "commit_id": "CHA-0029",
+    "iteration": 29,
+    "timestamp": "2026-03-13T22:20:34.899754",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "pour_duration_s",
+    "old_val": 18.6597,
+    "new_val": 17.5934,
+    "description": "Tweak pour_duration_s: 18.6597s \u2192 17.5934s (-5.7%)",
+    "score_before": -0.3958,
+    "score_after": -0.4551,
+    "delta": -0.0593,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 17.5934,
+      "lift_height_cm": 24.3323
+    }
+  },
+  {
+    "commit_id": "CHA-0045",
+    "iteration": 45,
+    "timestamp": "2026-03-13T22:20:47.144936",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "lift_height_cm",
+    "old_val": 24.3323,
+    "new_val": 22.7213,
+    "description": "Tweak lift_height_cm: 24.3323cm \u2192 22.7213cm (-6.6%)",
+    "score_before": -0.4551,
+    "score_after": -0.4606,
+    "delta": -0.0055,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 17.5934,
+      "lift_height_cm": 22.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0050",
+    "iteration": 50,
+    "timestamp": "2026-03-13T22:20:50.475657",
+    "dry_run": false,
+    "experiment_src": "rpc",
+    "field_changed": "pour_duration_s",
+    "old_val": 17.5934,
+    "new_val": 15.8808,
+    "description": "Tweak pour_duration_s: 17.5934s \u2192 15.8808s (-9.7%)",
+    "score_before": -0.4606,
+    "score_after": -0.5315,
+    "delta": -0.0709,
+    "params": {
+      "grasp_force_n": 8.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 15.8808,
+      "lift_height_cm": 22.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0002",
+    "iteration": 2,
+    "timestamp": "2026-03-13T22:43:20.580121",
+    "dry_run": false,
+    "experiment_src": "dummy",
+    "field_changed": "grasp_force_n",
+    "old_val": 8.0,
+    "new_val": 7.5,
+    "description": "Tweak grasp_force_n: 8.0N \u2192 7.5N (-0.5N, -6.2%)",
+    "score_before": -0.4978,
+    "score_after": -0.5029,
+    "delta": -0.0051,
+    "params": {
+      "grasp_force_n": 7.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 15.8808,
+      "lift_height_cm": 22.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0003",
+    "iteration": 3,
+    "timestamp": "2026-03-13T22:43:20.883884",
+    "dry_run": false,
+    "experiment_src": "dummy",
+    "field_changed": "lift_height_cm",
+    "old_val": 22.7213,
+    "new_val": 23.7213,
+    "description": "Tweak lift_height_cm: 22.7213cm \u2192 23.7213cm (+1cm, +4.4%)",
+    "score_before": -0.5029,
+    "score_after": -0.5101,
+    "delta": -0.0072,
+    "params": {
+      "grasp_force_n": 7.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 15.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0001",
+    "iteration": 1,
+    "timestamp": "2026-03-13T22:55:46.317093",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "grasp_force_n",
+    "old_val": 7.5,
+    "new_val": 7.0,
+    "description": "Tweak grasp_force_n: 7.5N \u2192 7.0N (-0.5N, -6.7%)",
+    "score_before": -0.503,
+    "score_after": -0.5095,
+    "delta": -0.0065,
+    "params": {
+      "grasp_force_n": 7.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 15.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0002",
+    "iteration": 2,
+    "timestamp": "2026-03-13T23:20:23.283128",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "fill_stop_fraction",
+    "old_val": 0.7777,
+    "new_val": 0.7577,
+    "description": "Tweak fill_stop_fraction: 0.7777 \u2192 0.7577 (-0.02, -2.6%)",
+    "score_before": -0.4889,
+    "score_after": -0.4897,
+    "delta": -0.0008,
+    "params": {
+      "grasp_force_n": 7.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7577,
+      "pour_duration_s": 15.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0004",
+    "iteration": 4,
+    "timestamp": "2026-03-13T23:20:23.896390",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "grasp_force_n",
+    "old_val": 7.0,
+    "new_val": 6.5,
+    "description": "Tweak grasp_force_n: 7.0N \u2192 6.5N (-0.5N, -7.1%)",
+    "score_before": -0.4897,
+    "score_after": -0.5108,
+    "delta": -0.0211,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7577,
+      "pour_duration_s": 15.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0018",
+    "iteration": 18,
+    "timestamp": "2026-03-13T23:20:28.805616",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "pour_duration_s",
+    "old_val": 15.8808,
+    "new_val": 15.3808,
+    "description": "Tweak pour_duration_s: 15.8808s \u2192 15.3808s (-0.5s, -3.1%)",
+    "score_before": -0.5108,
+    "score_after": -0.5267,
+    "delta": -0.0159,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7577,
+      "pour_duration_s": 15.3808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0023",
+    "iteration": 23,
+    "timestamp": "2026-03-13T23:20:31.008531",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "pour_duration_s",
+    "old_val": 15.3808,
+    "new_val": 14.8808,
+    "description": "Tweak pour_duration_s: 15.3808s \u2192 14.8808s (-0.5s, -3.3%)",
+    "score_before": -0.5267,
+    "score_after": -0.5768,
+    "delta": -0.0501,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7577,
+      "pour_duration_s": 14.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0042",
+    "iteration": 42,
+    "timestamp": "2026-03-13T23:20:38.558114",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "fill_stop_fraction",
+    "old_val": 0.7577,
+    "new_val": 0.7777,
+    "description": "Tweak fill_stop_fraction: 0.7577 \u2192 0.7777 (+0.02, +2.6%)",
+    "score_before": -0.5768,
+    "score_after": -0.5946,
+    "delta": -0.0178,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 14.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0005",
+    "iteration": 5,
+    "timestamp": "2026-03-13T23:32:48.277526",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "lift_height_cm",
+    "old_val": 23.7213,
+    "new_val": 24.7213,
+    "description": "Tweak lift_height_cm: 23.7213cm \u2192 24.7213cm (+1cm, +4.2%)",
+    "score_before": -0.5715,
+    "score_after": -0.5864,
+    "delta": -0.0149,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 14.8808,
+      "lift_height_cm": 24.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0018",
+    "iteration": 18,
+    "timestamp": "2026-03-13T23:32:52.983330",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "pour_duration_s",
+    "old_val": 14.8808,
+    "new_val": 14.3808,
+    "description": "Tweak pour_duration_s: 14.8808s \u2192 14.3808s (-0.5s, -3.4%)",
+    "score_before": -0.5864,
+    "score_after": -0.6065,
+    "delta": -0.0201,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 14.3808,
+      "lift_height_cm": 24.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0022",
+    "iteration": 22,
+    "timestamp": "2026-03-13T23:32:55.104872",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "lift_height_cm",
+    "old_val": 24.7213,
+    "new_val": 23.7213,
+    "description": "Tweak lift_height_cm: 24.7213cm \u2192 23.7213cm (-1cm, -4.0%)",
+    "score_before": -0.6065,
+    "score_after": -0.6116,
+    "delta": -0.0051,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 14.3808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0023",
+    "iteration": 23,
+    "timestamp": "2026-03-13T23:32:55.411502",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "pour_duration_s",
+    "old_val": 14.3808,
+    "new_val": 13.8808,
+    "description": "Tweak pour_duration_s: 14.3808s \u2192 13.8808s (-0.5s, -3.5%)",
+    "score_before": -0.6116,
+    "score_after": -0.6212,
+    "delta": -0.0096,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 13.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0028",
+    "iteration": 28,
+    "timestamp": "2026-03-13T23:32:56.947360",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "tilt_angle_deg",
+    "old_val": 56.8573,
+    "new_val": 59.3573,
+    "description": "Tweak tilt_angle_deg: 56.8573\u00b0 \u2192 59.3573\u00b0 (+2.5\u00b0, +4.4%)",
+    "score_before": -0.6212,
+    "score_after": -0.6266,
+    "delta": -0.0054,
+    "params": {
+      "grasp_force_n": 6.5,
+      "tilt_angle_deg": 59.3573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 13.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0029",
+    "iteration": 29,
+    "timestamp": "2026-03-13T23:32:57.255936",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "grasp_force_n",
+    "old_val": 6.5,
+    "new_val": 6.0,
+    "description": "Tweak grasp_force_n: 6.5N \u2192 6.0N (-0.5N, -7.7%)",
+    "score_before": -0.6266,
+    "score_after": -0.6479,
+    "delta": -0.0213,
+    "params": {
+      "grasp_force_n": 6.0,
+      "tilt_angle_deg": 59.3573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 13.8808,
+      "lift_height_cm": 23.7213
+    }
+  },
+  {
+    "commit_id": "CHA-0048",
+    "iteration": 48,
+    "timestamp": "2026-03-13T23:33:05.341626",
+    "dry_run": false,
+    "experiment_src": "real_sim",
+    "field_changed": "tilt_angle_deg",
+    "old_val": 59.3573,
+    "new_val": 56.8573,
+    "description": "Tweak tilt_angle_deg: 59.3573\u00b0 \u2192 56.8573\u00b0 (-2.5\u00b0, -4.2%)",
+    "score_before": -0.6479,
+    "score_after": -0.649,
+    "delta": -0.0011,
+    "params": {
+      "grasp_force_n": 6.0,
+      "tilt_angle_deg": 56.8573,
+      "fill_stop_fraction": 0.7777,
+      "pour_duration_s": 13.8808,
+      "lift_height_cm": 23.7213
+    }
+  }
+]

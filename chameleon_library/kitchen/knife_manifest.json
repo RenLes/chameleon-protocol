@@ -1,0 +1,126 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "chameleonManifestVersion": "1.0.0",
+  "objectClass": "kitchen.utensil.knife",
+  "objectId": "CHA-KIT-KNF-001",
+  "displayName": "Chef's Knife",
+  "description": "Standard 20cm chef's knife. HIGH RISK \u2014 humanoid cross-check and command signing required.",
+  "manufacturer": "Generic",
+  "category": "kitchen",
+  "tags": [
+    "utensil",
+    "knife",
+    "kitchen",
+    "sharp"
+  ],
+  "physicalProperties": {
+    "material": "stainless_steel",
+    "weightKg": 0.2,
+    "fragile": false,
+    "spillRisk": false,
+    "dimensions": {
+      "heightCm": 3.0,
+      "widthCm": 20.0,
+      "depthCm": 4.0
+    },
+    "placementSurfaces": [
+      "cutting_board",
+      "flat_surface"
+    ],
+    "graspPoints": [
+      {
+        "id": "handle",
+        "type": "power_grip",
+        "location": "handle",
+        "forceMaxNewtons": 5,
+        "forceRecommendedNewtons": 3.0,
+        "fingerSpreadMm": 35,
+        "requiresHeatGlove": false
+      }
+    ]
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "safetyLevel": "strict",
+    "maxForceNewtons": 5,
+    "maxTemperatureCelsius": 40,
+    "humanContactMaxTempCelsius": 35,
+    "emergencyStop": true,
+    "noHumanContactWhenHot": false,
+    "prohibitedActions": [
+      "throw",
+      "weaponize",
+      "harm",
+      "injure",
+      "stab",
+      "slash",
+      "point_at_human",
+      "hold_by_blade"
+    ],
+    "requiredPPE": [
+      "cut_resistant_gloves"
+    ],
+    "safeDistanceMeters": 0.5,
+    "humanoidCrossCheckRequired": true,
+    "commandSigningRequired": true
+  },
+  "security": {
+    "did": "did:chameleon:kitchen:CHA-KIT-KNF-001",
+    "vcSchema": "https://chameleon.io/schemas/appliance/v1",
+    "blockchainLedger": "iota_private_chameleon",
+    "accessPolicy": "any_authorized_humanoid",
+    "auditLogRequired": true,
+    "commandSigningRequired": true
+  },
+  "certificationStatus": {
+    "certified": true,
+    "certifier": "did:chameleon:hub:v1",
+    "certDate": "2026-03-14",
+    "certTxId": "cert-tx-CHA-KIT-KNF-001-20260314",
+    "status": "certified",
+    "notes": "Chameleon Certified \u2014 safety and schema validated by Hub v1.0. weaponizationPrevention=true, emergencyStop=true."
+  },
+  "matterAPI": {
+    "endpoint": "matter://kitchen/CHA-KIT-KNF-001",
+    "clusters": [
+      "OnOff"
+    ],
+    "supported": true,
+    "matterId": "0xCHA1005"
+  },
+  "actions": [
+    {
+      "id": "pick_up",
+      "description": "Grasp knife by handle only",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "place_down",
+      "description": "Place knife flat on cutting board, blade away from humans",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 5
+    },
+    {
+      "id": "cut",
+      "description": "Perform cutting motion on cutting board",
+      "requiredSensors": [
+        "force_torque",
+        "vision"
+      ],
+      "requiresVC": true,
+      "humanoidCrossCheck": true,
+      "maxDurationSeconds": 30
+    }
+  ]
+}

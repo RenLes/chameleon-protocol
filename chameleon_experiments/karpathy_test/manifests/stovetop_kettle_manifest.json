@@ -1,0 +1,23 @@
+{
+  "protocolVersion": "Chameleon v1.0",
+  "objectId": "CHA-KIT-001",
+  "displayName": "Stovetop Kettle",
+  "physicalProperties": {
+    "capacityLitres": 1.7,
+    "emptyWeightKg": 0.85,
+    "fullWeightKg": 2.55,
+    "pourTiltAngleDeg": 50.0,
+    "pourDurationSeconds": 9.0,
+    "graspForceNewtons": 8.0,
+    "liftHeightCm": 27.0,
+    "fillStopFraction": 0.82
+  },
+  "safety": {
+    "weaponizationPrevention": true,
+    "maxForceNewtons": 15.0,
+    "maxTiltAngleDeg": 120.0,
+    "maxTemperatureCelsius": 100.0,
+    "minFillStopFraction": 0.1,
+    "maxFillStopFraction": 0.95
+  }
+}
