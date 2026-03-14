@@ -3,9 +3,13 @@
 > **The open standard for humanoid robot–object interaction.**
 > Every physical object gets a manifest. Every action gets validated. Every interaction gets logged.
 
-![Chameleon Karpathy Optimisation — RTX 4090 Cloud Validation](chameleon_experiments/karpathy_test/plots/chameleon_results.png)
+![Chameleon Karpathy Optimisation — Stovetop Kettle — RTX 4090](chameleon_experiments/karpathy_test/plots/chameleon_results.png)
 
-*Above: Karpathy loop optimising stovetop kettle interaction parameters across 100 iterations on an NVIDIA RTX 4090 (Vast.ai cloud). Best score: +0.4560. Zero safety violations. 20% spill reduction at optimal fill fraction 0.89.*
+*Stovetop Kettle: 100 iterations on NVIDIA RTX 4090. Best score: +0.4560. Zero safety violations. Optimal fill fraction 0.89.*
+
+![Chameleon Karpathy Optimisation — TV Remote Control — RTX 4090](chameleon_experiments/karpathy_test/plots/remote_results.png)
+
+*TV Remote Control: 100 iterations on NVIDIA RTX 4090. Best score: +0.5815. 100% button success rate. Zero damage events.*
 
 ---
 
@@ -31,6 +35,10 @@ Validated on **NVIDIA RTX 4090** (Vast.ai cloud, Ubuntu 22.04, CUDA 12.1) — Ma
 
 | Metric | Result |
 |--------|--------|
+### Object 1 — Stovetop Kettle
+
+| Metric | Result |
+|--------|--------|
 | **Best Score** | +0.4560 |
 | **Optimal Fill Fraction** | 0.89 (89% capacity) |
 | **Optimal Lift Height** | 20.0 cm |
@@ -39,7 +47,27 @@ Validated on **NVIDIA RTX 4090** (Vast.ai cloud, Ubuntu 22.04, CUDA 12.1) — Ma
 | **Safety Violations** | 0 / 100 iterations ✅ |
 | **Spill Rate at Optimal Params** | 0% ✅ |
 | **Parameter Convergence** | Achieved by iteration 5 |
-| **Iterations Run** | 100 |
+
+### Object 2 — TV Remote Control
+
+| Metric | Result |
+|--------|--------|
+| **Best Score** | +0.5815 |
+| **Optimal Press Force** | 2.9N (limit: 5N) ✅ |
+| **Optimal Finger Tip Angle** | 45° |
+| **Optimal Approach Speed** | 6.4 cm/s |
+| **Button Success Rate** | 100% ✅ |
+| **Button Damage Events** | 0 / 100 iterations ✅ |
+| **Safety Violations** | 0 / 100 iterations ✅ |
+| **Parameter Convergence** | Achieved by iteration 20 |
+
+### Combined Validation Summary
+
+| Object | Best Score | Safety Violations | Success Rate |
+|--------|-----------|-------------------|--------------|
+| Stovetop Kettle | +0.4560 | 0 ✅ | 80% (spill-free at optimal) |
+| TV Remote Control | +0.5815 | 0 ✅ | 100% ✅ |
+| **Platform** | **NVIDIA RTX 4090** | **Vast.ai cloud** | **March 2026** |
 
 ---
 
@@ -212,7 +240,8 @@ Write optimised parameters back to manifest
 - [x] Isaac Lab / stub physics server
 - [x] Certification Hub (FastAPI + W3C VC)
 - [x] Certified object catalogue (web UI)
-- [x] Cloud GPU validation (RTX 4090) ✅
+- [x] Cloud GPU validation — Stovetop Kettle (RTX 4090) ✅
+- [x] Cloud GPU validation — TV Remote Control (RTX 4090) ✅
 - [ ] Real robot arm validation (Unitree Z1 / UR5e)
 - [ ] LeRobot dataset integration
 - [ ] ROS2 bridge (in progress)
